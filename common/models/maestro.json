@@ -1,0 +1,24 @@
+{
+  "name": "maestro",
+  "plural": "maestros",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "user_id": {
+      "type": "number",
+      "required":true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "publicacion": {
+     "type": "hasMany",
+     "model": "publicacion"
+   }
+  },
+  "acls": [],
+  "methods": {}
+}
