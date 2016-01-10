@@ -1,0 +1,24 @@
+{
+  "name": "PublicPublication",
+  "plural": "publicpublications",
+  "base": "Publication",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "arangodb": {
+    "collection": "Publication"
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

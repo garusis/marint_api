@@ -14,46 +14,54 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "arangodb"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "memory",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "arangodb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "arangodb",
     "public": false
   },
-  "publicacion": {
-    "dataSource": "mysql",
+  "Publication": {
+    "dataSource": "arangodb",
     "public": true
   },
-  "log": {
-    "dataSource": "mysql",
+  "PublicPublication": {
+    "dataSource": "arangodb",
     "public": true
   },
-  "accion": {
-    "dataSource": "mysql",
+  "AppUser": {
+    "dataSource": "arangodb",
     "public": true
   },
-  "alumno": {
-    "dataSource": "mysql",
+  "Instructor": {
+    "dataSource": "arangodb",
     "public": true
   },
-  "user": {
-    "dataSource": "mysql",
+  "Student": {
+    "dataSource": "arangodb",
     "public": true
   },
-  "maestro": {
-    "dataSource": "mysql",
+  "Comment": {
+    "dataSource": "arangodb",
+    "public": true
+  },
+  "Testimony": {
+    "dataSource": "arangodb",
+    "public": true
+  },
+  "Gender": {
+    "dataSource": "memory",
     "public": true
   }
 }

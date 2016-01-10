@@ -1,10 +1,13 @@
 {
-  "name": "alumno",
-  "plural": "alumnos",
-  "base": "PersistedModel",
+  "name": "Instructor",
+  "plural": "instructors",
+  "base": "AppUser",
   "idInjection": true,
   "options": {
     "validateUpsert": true
+  },
+  "arangodb": {
+    "collection": "AppUser"
   },
   "properties": {},
   "validations": [],

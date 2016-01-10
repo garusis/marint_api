@@ -1,0 +1,48 @@
+{
+  "name": "AppUser",
+  "plural": "appusers",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "arangodb": {
+    "collection": "AppUser"
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "lastAccess": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "mixins": {
+    "Timestamp": true
+  },
+  "validations": [],
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
+    },
+    "gender": {
+      "type": "belongsTo",
+      "model": "Gender",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

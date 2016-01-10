@@ -1,0 +1,55 @@
+{
+  "name": "Publication",
+  "plural": "publications",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "arangodb": {
+    "collection": "Publication"
+  },
+  "mixins": {
+    "Timestamp": true,
+    "PublishedTimestamp": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "preview": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean",
+      "index": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "instructor": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": ""
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
+}

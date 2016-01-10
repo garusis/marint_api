@@ -1,15 +1,15 @@
 {
-  "db": {
-    "name": "db",
+  "memory": {
+    "name": "memory",
     "connector": "memory"
   },
-  "mysql": {
-    "host": "localhost",
-    "port": 3306,
-    "database": "minternacional",
-    "username": "root",
-    "password": "",
-    "name": "mysql",
-    "connector": "mysql"
+  "arangodb": {
+    "port": 8529,
+    "database": "test",
+    "username": "test",
+    "password": "123456",
+    "name": "arangodb",
+    "connector": "arangodb",
+    "hostname": "127.0.0.1"
   }
 }
