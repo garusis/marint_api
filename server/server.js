@@ -1,19 +1,19 @@
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+"use strict";
+const loopback = require('loopback');
+const boot = require('loopback-boot');
 
-var oldSetup = loopback.PersistedModel.setup;
-var updateParent = function (ParentModel, newChildrenModelName) {
-  if (ParentModel.definition.settings.__children_models) {
-    ParentModel.definition.settings.__children_models.push(newChildrenModelName);
+const oldSetup = loopback.PersistedModel.setup;
+const updateParent = function(ParentModel, newChildrenModelName) {
+  if (ParentModel.definition.settings.__children_models__) {
+    ParentModel.definition.settings.__children_models__.push(newChildrenModelName);
     updateParent(ParentModel.base, newChildrenModelName);
   }
 };
-loopback.PersistedModel.setup = function () {
-  var Model = this;
 
-  //TODO: HAY UN ERROR DEBIDO A QUE ESTOY PERMITIENDO QUE DESDE UNA CLASE HIJA SE LISTEN A LOS PERTENECIENTES A LAS CLASES PADRES...
-  // Y DEBE SER JUSTO AL CONTRARIO
-  Model.defineProperty("__model_name", {
+loopback.PersistedModel.setup = function () {
+  const Model = this;
+
+  Model.defineProperty("__model_name__", {
     type: String,
     index: true,
     default: Model.definition.name,
@@ -23,14 +23,18 @@ loopback.PersistedModel.setup = function () {
   if (!Model.definition.settings.hidden) {
     Model.definition.settings.hidden = [];
   }
-  Model.definition.settings.hidden.push("__model_name");
-  Model.definition.settings.__children_models = [];
+  Model.definition.settings.hidden.push("__model_name__");
+  Model.definition.settings.__children_models__ = [];
   updateParent(Model, Model.definition.name);
 
   Model.observe("access", function (ctx, next) {
-    var __children_models = ctx.Model.definition.settings.__children_models;
-    var or = __children_models.map(function (model) {
-      return {__model_name: model};
+    if (ctx.childrenModelsHasFiltered) {
+      return next();
+    }
+    ctx.childrenModelsHasFiltered = true;
+    const __children_models__ = ctx.Model.definition.settings.__children_models__;
+    let or = __children_models__.map((model) => {
+      return {__model_name__: model};
     });
 
     if (ctx.query.where) {
@@ -50,16 +54,16 @@ loopback.PersistedModel.setup = function () {
   oldSetup.apply(Model, arguments);
 };
 
-var app = module.exports = loopback();
+const app = module.exports = loopback();
 
 app.start = function () {
   // start the web server
   return app.listen(function () {
     app.emit('started');
-    var baseUrl = app.get('url').replace(/\/$/, '');
+    let baseUrl = app.get('url').replace(/\/$/, '');
     console.log('Web server listening at: %s', baseUrl);
     if (app.get('loopback-component-explorer')) {
-      var explorerPath = app.get('loopback-component-explorer').mountPath;
+      let explorerPath = app.get('loopback-component-explorer').mountPath;
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
   });

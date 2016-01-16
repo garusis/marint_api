@@ -2,16 +2,23 @@
   "name": "Student",
   "plural": "students",
   "base": "AppUser",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
-  "arangodb": {
+  "mongodb": {
     "collection": "AppUser"
   },
   "properties": {},
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

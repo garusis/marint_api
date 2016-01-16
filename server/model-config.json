@@ -14,7 +14,7 @@
     ]
   },
   "User": {
-    "dataSource": "arangodb"
+    "dataSource": "mongodb"
   },
   "AccessToken": {
     "dataSource": "memory",
@@ -25,39 +25,39 @@
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": false
   },
   "Role": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": false
   },
   "Publication": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "PublicPublication": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "AppUser": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "Instructor": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "Student": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "Comment": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "Testimony": {
-    "dataSource": "arangodb",
+    "dataSource": "mongodb",
     "public": true
   },
   "Gender": {

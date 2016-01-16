@@ -11,5 +11,12 @@
     "name": "arangodb",
     "connector": "arangodb",
     "hostname": "127.0.0.1"
+  },
+  "mongodb": {
+    "port": 27017,
+    "database": "marlininternacional",
+    "name": "mongodb",
+    "connector": "mongodb",
+    "hostname": "127.0.0.1"
   }
 }

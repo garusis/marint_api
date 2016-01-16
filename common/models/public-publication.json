@@ -2,11 +2,11 @@
   "name": "PublicPublication",
   "plural": "publicpublications",
   "base": "Publication",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
-  "arangodb": {
+  "mongodb": {
     "collection": "Publication"
   },
   "properties": {},
@@ -18,6 +18,19 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "__get__comments"
     }
   ],
   "methods": {}

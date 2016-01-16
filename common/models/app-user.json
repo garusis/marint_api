@@ -2,12 +2,17 @@
   "name": "AppUser",
   "plural": "appusers",
   "base": "User",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": true,
+    "emailVerificationRequired": false
   },
-  "arangodb": {
+  "mongodb": {
     "collection": "AppUser"
+  },
+  "mixins": {
+    "Timestamp": true,
+    "OwnId": true
   },
   "properties": {
     "name": {
@@ -18,31 +23,40 @@
       "type": "string",
       "required": true
     },
-    "username": {
-      "type": "string",
-      "required": true
-    },
     "lastAccess": {
-      "type": "date",
-      "required": true
+      "type": "date"
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "index": true
+    },
+    "genderShort": {
+      "type": "string",
+      "required": true,
+      "index": true
     }
-  },
-  "mixins": {
-    "Timestamp": true
   },
   "validations": [],
   "relations": {
     "comments": {
       "type": "hasMany",
       "model": "Comment",
-      "foreignKey": ""
+      "foreignKey": "userId"
     },
     "gender": {
       "type": "belongsTo",
       "model": "Gender",
-      "foreignKey": ""
+      "foreignKey": "genderShort"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

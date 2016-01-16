@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Created by Marcos J. Alvarez on 09/01/2016.
  * @author Marcos J. Alvarez

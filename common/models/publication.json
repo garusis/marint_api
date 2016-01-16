@@ -2,16 +2,17 @@
   "name": "Publication",
   "plural": "publications",
   "base": "PersistedModel",
-  "idInjection": true,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
-  "arangodb": {
+  "mongodb": {
     "collection": "Publication"
   },
   "mixins": {
     "Timestamp": true,
-    "PublishedTimestamp": true
+    "PublishedTimestamp": true,
+    "OwnId": true
   },
   "properties": {
     "title": {
@@ -35,12 +36,12 @@
     "instructor": {
       "type": "belongsTo",
       "model": "Instructor",
-      "foreignKey": ""
+      "foreignKey": "instructorId"
     },
     "comments": {
       "type": "hasMany",
       "model": "Comment",
-      "foreignKey": ""
+      "foreignKey": "publicationId"
     }
   },
   "acls": [
@@ -49,6 +50,32 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "instructor",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "__get__comments"
     }
   ],
   "methods": {}
