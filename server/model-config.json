@@ -63,5 +63,21 @@
   "Gender": {
     "dataSource": "memory",
     "public": true
+  },
+  "Course": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "CourseModule": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "Video": {
+    "dataSource": "transient",
+    "public": false
   }
 }

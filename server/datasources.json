@@ -18,5 +18,9 @@
     "name": "mongodb",
     "connector": "mongodb",
     "hostname": "127.0.0.1"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
   }
 }

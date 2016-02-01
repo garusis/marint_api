@@ -1,0 +1,21 @@
+{
+  "name": "CourseModule",
+  "base": "Model",
+  "idInjection": true,
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "videos": {
+      "type": "embedsMany",
+      "model": "Video",
+      "property": "videoList"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

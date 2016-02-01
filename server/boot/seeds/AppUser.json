@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Marcos J.",
+    "lastname": "Alvarez M.",
+    "username": "garusis",
+    "email": "garusis@gmail.com",
+    "emailVerified": true,
+    "password": "123456",
+    "created": "2016-01-10",
+    "lastUpdated": "2016-01-10",
+    "lastAccess": "2016-01-10",
+    "genderShort": "m"
+  },
+  {
+    "name": "Marco Lino",
+    "lastname": " Alvarez B.",
+    "username": "marlininternacional",
+    "email": "marlininternacional@hotmail.com",
+    "emailVerified": true,
+    "password": "123456",
+    "created": "2016-01-10",
+    "lastUpdated": "2016-01-10",
+    "lastAccess": "2016-01-10",
+    "genderShort": "m"
+  },
+  {
+    "name": "Yanidis Josefina",
+    "lastname": "Maestre D.",
+    "username": "yanidisjos",
+    "email": "yanidisjos@gmail.com",
+    "emailVerified": true,
+    "password": "123456",
+    "created": "2016-01-10",
+    "lastUpdated": "2016-01-10",
+    "lastAccess": "2016-01-10",
+    "genderShort": "f"
+  }
+]

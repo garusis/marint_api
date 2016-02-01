@@ -19,6 +19,9 @@
       "type": "string",
       "required": true
     },
+    "imagePreview": {
+      "type": "string"
+    },
     "preview": {
       "type": "string"
     },
