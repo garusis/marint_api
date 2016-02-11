@@ -17,9 +17,9 @@
   const RoleMapping = app.models.RoleMapping;
   const memoryDataSource = app.dataSources.memory;
 
-  const seedModel = function (Model) {
+  const seedModel = function (Model, data) {
     const seederBasePath = './seeds';
-    var dataToSeed = require(`${seederBasePath}/${Model.definition.name}`);
+    var dataToSeed = data || require(`${seederBasePath}/${Model.definition.name}`);
     return new Promise(function (resolve, reject) {
       Model.create(dataToSeed, function (err, data) {
         if (err) {
@@ -44,6 +44,10 @@
         const PublicPublication = mongodbDataSource.models.PublicPublication;
         const Publication = mongodbDataSource.models.Publication;
         const Course = mongodbDataSource.models.Course;
+
+        let courses;
+        let coursesModules;
+
 
         Promise
           .resolve([seedModel(Role), seedModel(User)])
@@ -80,11 +84,12 @@
               });
             seedModel(Course)
               .then(function (elems) {
-                console.log(elems);
+                Course.updateAll({}, {instructorId: users.marlininternacional.id}, function (err, resp) {
+
+                });
               });
           });
         seedModel(Testimony);
-
       });
     });
   });

@@ -36,6 +36,10 @@
       "type": "embedsMany",
       "model": "CourseModule",
       "property": "moduleList"
+    },
+    "intructor": {
+      "type": "belongsTo",
+      "model": "Instructor"
     }
   },
   "acls": [],
