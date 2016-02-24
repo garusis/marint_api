@@ -2,6 +2,10 @@
   "name": "Video",
   "base": "Model",
   "idInjection": true,
+  "mixins": {
+    "Timestamp": true,
+    "OwnId": true
+  },
   "properties": {
     "title": {
       "type": "string",

@@ -32,7 +32,7 @@ const Base64 = {
     // console.log("rixits : " + rixits);
     // console.log("rixits.split('') : " + rixits.split(''));
     rixits = rixits.split('');
-    for (e in rixits) {
+    for (let e in rixits) {
       // console.log("_Rixits.indexOf(" + rixits[e] + ") : " +
       // this._Rixits.indexOf(rixits[e]));
       // console.log("result before : " + result);

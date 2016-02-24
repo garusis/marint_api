@@ -6,6 +6,10 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Timestamp": true,
+    "OwnId": true
+  },
   "properties": {
     "name": {
       "type": "string",
@@ -37,7 +41,7 @@
       "model": "CourseModule",
       "property": "moduleList"
     },
-    "intructor": {
+    "instructor": {
       "type": "belongsTo",
       "model": "Instructor"
     }

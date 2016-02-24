@@ -2,7 +2,18 @@
   {
     "name": "La Ley del Éxito",
     "description": "Aprende los atajos que hacen que haya personas que tienen éxito repetitivamente.",
-    "price": 96.99
+    "price": 96.99,
+    "modules": [
+      {
+        "name": "primero",
+        "videos": [
+          {
+            "title": "video1",
+            "url": "http://localhost:8080/videos_prueba/1.mp4"
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "Curso Vital de Programación Neuro-Lingüistica",
