@@ -2,16 +2,96 @@
   {
     "name": "La Ley del Éxito",
     "description": "Aprende los atajos que hacen que haya personas que tienen éxito repetitivamente.",
-    "price": 96.99
+    "price": 96.99,
+    "imagePreview": {
+      "original": "//localhost/cloud/examples/345_235.png",
+      "thumb_small": "//localhost/cloud/examples/345_235.png",
+      "thumb_medium": "//localhost/cloud/examples/345_235.png",
+      "thumb_large": "//localhost/cloud/examples/345_235.png",
+      "small": "//localhost/cloud/examples/345_235.png",
+      "medium": "//localhost/cloud/examples/345_235.png",
+      "large": "//localhost/cloud/examples/345_235.png"
+    },
+    "modules": [
+      {
+        "name": "primero",
+        "videos": [
+          {
+            "title": "video1",
+            "url": "http://localhost/videos_prueba/1.mp4"
+          },
+          {
+            "title": "video2",
+            "url": "http://localhost/videos_prueba/2.mp4"
+          },
+          {
+            "title": "video3",
+            "url": "http://localhost/videos_prueba/3.mp4"
+          }
+        ]
+      },
+      {
+        "name": "segundo",
+        "videos": [
+          {
+            "title": "video4",
+            "url": "http://localhost/videos_prueba/4.mp4"
+          },
+          {
+            "title": "video5",
+            "url": "http://localhost/videos_prueba/5.mp4"
+          },
+          {
+            "title": "video6",
+            "url": "http://localhost/videos_prueba/6.mp4"
+          }
+        ]
+      },
+      {
+        "name": "tercero",
+        "videos": [
+          {
+            "title": "video7",
+            "url": "http://localhost/videos_prueba/7.mp4"
+          },
+          {
+            "title": "video8",
+            "url": "http://localhost/videos_prueba/8.mp4"
+          },
+          {
+            "title": "video9",
+            "url": "http://localhost/videos_prueba/9.mp4"
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "Curso Vital de Programación Neuro-Lingüistica",
     "description": "En este curso de PNL aprenderás las herramientas básicas de la PNL como los Sistemas Representacionales, Neuroasociaciones, Metamodelo del Lenguaje y Formulación de Objetivos que te ayudarán a incrementar tu calidad de vida.",
-    "price": 96.99
+    "price": 96.99,
+    "imagePreview": {
+      "original": "//localhost/cloud/examples/345_235.png",
+      "thumb_small": "//localhost/cloud/examples/345_235.png",
+      "thumb_medium": "//localhost/cloud/examples/345_235.png",
+      "thumb_large": "//localhost/cloud/examples/345_235.png",
+      "small": "//localhost/cloud/examples/345_235.png",
+      "medium": "//localhost/cloud/examples/345_235.png",
+      "large": "//localhost/cloud/examples/345_235.png"
+    }
   },
   {
     "name": "Un Nuevo Conocimiento de Prosperidad",
     "description": "Las condiciones económicas de una persona no dependen de los factores externos tales como la cantidad de dinero que ganan, sino mas bien de su ambiente interno, lo cual incluye: cómo se perciben a sí mismos, como piensan y las necesidades emocionales que tienden a expresar.",
-    "price": 96.99
+    "price": 96.99,
+    "imagePreview": {
+      "original": "//localhost/cloud/examples/345_235.png",
+      "thumb_small": "//localhost/cloud/examples/345_235.png",
+      "thumb_medium": "//localhost/cloud/examples/345_235.png",
+      "thumb_large": "//localhost/cloud/examples/345_235.png",
+      "small": "//localhost/cloud/examples/345_235.png",
+      "medium": "//localhost/cloud/examples/345_235.png",
+      "large": "//localhost/cloud/examples/345_235.png"
+    }
   }
 ]

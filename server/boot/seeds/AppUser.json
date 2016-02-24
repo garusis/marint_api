@@ -21,7 +21,16 @@
     "created": "2016-01-10",
     "lastUpdated": "2016-01-10",
     "lastAccess": "2016-01-10",
-    "genderShort": "m"
+    "genderShort": "m",
+    "imagePreview": {
+      "original": "//localhost/cloud/user/marcolino-thumb-l.jpg",
+      "thumb_small": "//localhost/cloud/user/marcolino-thumb-s.jpg",
+      "thumb_medium": "//localhost/cloud/user/marcolino-thumb-m.jpg",
+      "thumb_large": "//localhost/cloud/user/marcolino-thumb-l.jpg",
+      "small": "//localhost/cloud/user/marcolino-s.jpg",
+      "medium": "//localhost/cloud/user/marcolino-m.jpg",
+      "large": "//localhost/cloud/user/marcolino-l.jpg"
+    }
   },
   {
     "name": "Yanidis Josefina",

@@ -2,6 +2,9 @@
   "name": "CourseModule",
   "base": "PersistedModel",
   "idInjection": true,
+  "mixins": {
+    "OwnId": true
+  },
   "properties": {
     "name": {
       "type": "string",

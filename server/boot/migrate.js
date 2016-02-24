@@ -17,16 +17,19 @@
   const RoleMapping = app.models.RoleMapping;
   const memoryDataSource = app.dataSources.memory;
 
-  const seedModel = function (Model, data) {
+  const loadSeedData = function (Model) {
     const seederBasePath = './seeds';
-    var dataToSeed = data || require(`${seederBasePath}/${Model.definition.name}`);
+    return require(`${seederBasePath}/${Model.definition.name}`);
+  };
+  const seedModel = function (Model, data) {
+    let dataToSeed = data || loadSeedData(Model);
     return new Promise(function (resolve, reject) {
       Model.create(dataToSeed, function (err, data) {
         if (err) {
           return reject(err);
         }
         return resolve(data);
-      })
+      });
     });
   };
 
@@ -37,8 +40,8 @@
 
     const mongodbDataSource = app.dataSources.mongodb;
 
-    mongodbDataSource.automigrate(['RoleMapping', 'Role', 'AppUser', 'Comment', 'Instructor', 'Publication', 'PublicPublication', 'Student', 'Testimony'], (err)=> {
-      mongodbDataSource.autoupdate(['RoleMapping', 'Role', 'AppUser', 'Comment', 'Instructor', 'Publication', 'PublicPublication', 'Student', 'Testimony'], (err) => {
+    mongodbDataSource.automigrate(['RoleMapping', 'Role', 'AppUser', 'Comment', 'Instructor', 'Publication', 'PublicPublication', 'Student', 'Testimony', 'Course'], (err)=> {
+      mongodbDataSource.autoupdate(['RoleMapping', 'Role', 'AppUser', 'Comment', 'Instructor', 'Publication', 'PublicPublication', 'Student', 'Testimony', 'Course'], (err) => {
         const User = mongodbDataSource.models.AppUser;
         const Testimony = mongodbDataSource.models.Testimony;
         const PublicPublication = mongodbDataSource.models.PublicPublication;
@@ -82,12 +85,33 @@
                 Publication.updateAll({}, {instructorId: users.marlininternacional.id}, function (err) {
                 });
               });
-            seedModel(Course)
-              .then(function (elems) {
-                Course.updateAll({}, {instructorId: users.marlininternacional.id}, function (err, resp) {
 
+            _.forEach(loadSeedData(Course), function (course) {
+              course.instructorId = users.marlininternacional.id;
+              let modules = course.modules;
+              delete course.modules;
+              Course.create(course, function (err, course) {
+                if (err) {
+                  return console.log(err);
+                }
+                _.forEach(modules, function (module) {
+                  let videos = module.videos;
+                  delete module.videos;
+                  course.__create__modules(module, function (err, module) {
+                    if (err) {
+                      return console.log(err);
+                    }
+                    _.forEach(videos, function (video) {
+                      module.__create__videos(video, function (err) {
+                        if (err) {
+                          return console.log(err);
+                        }
+                      });
+                    });
+                  });
                 });
               });
+            });
           });
         seedModel(Testimony);
       });

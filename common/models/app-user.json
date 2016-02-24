@@ -39,6 +39,11 @@
   },
   "validations": [],
   "relations": {
+    "image": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "imagePreview"
+    },
     "comments": {
       "type": "hasMany",
       "model": "Comment",

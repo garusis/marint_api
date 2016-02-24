@@ -1,33 +1,33 @@
 {
   "name": "Image",
   "base": "Model",
-  "idInjection": true,
+  "idInjection": false,
   "properties": {
     "original": {
       "type": "string",
       "required": true
     },
-    "thumb_1x": {
+    "thumb_small": {
       "type": "string",
       "required": true
     },
-    "thumb_2x": {
+    "thumb_medium": {
       "type": "string",
       "required": true
     },
-    "thumb_3x": {
+    "thumb_large": {
       "type": "string",
       "required": true
     },
-    "1x": {
+    "small": {
       "type": "string",
       "required": true
     },
-    "2x": {
+    "medium": {
       "type": "string",
       "required": true
     },
-    "3x": {
+    "large": {
       "type": "string",
       "required": true
     }

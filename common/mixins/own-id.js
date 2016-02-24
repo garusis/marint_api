@@ -32,7 +32,7 @@ const Base64 = {
     // console.log("rixits : " + rixits);
     // console.log("rixits.split('') : " + rixits.split(''));
     rixits = rixits.split('');
-    for (e in rixits) {
+    for (let e in rixits) {
       // console.log("_Rixits.indexOf(" + rixits[e] + ") : " +
       // this._Rixits.indexOf(rixits[e]));
       // console.log("result before : " + result);
@@ -49,7 +49,8 @@ let counter = 0;
 module.exports = function (Model, options) {
   options = _.defaults(options || {}, __def);
 
-  Model.observe("before save", (ctx, next) => {
+  Model.observe("before save", function (ctx, next) {
+    let t = this;
     if (ctx.isNewInstance) {
       counter = counter > 10000 ? 0 : ++counter;
       ctx.instance.id = Base64.fromNumber(Date.now()) + Base64.fromNumber(counter);

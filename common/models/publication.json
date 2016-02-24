@@ -19,9 +19,6 @@
       "type": "string",
       "required": true
     },
-    "imagePreview": {
-      "type": "string"
-    },
     "preview": {
       "type": "string"
     },
@@ -36,6 +33,11 @@
   },
   "validations": [],
   "relations": {
+    "image": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "imagePreview"
+    },
     "instructor": {
       "type": "belongsTo",
       "model": "Instructor",
