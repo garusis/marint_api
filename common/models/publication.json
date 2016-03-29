@@ -29,6 +29,10 @@
       "type": "boolean",
       "index": true,
       "default": false
+    },
+    "tags":{
+      "type":"array",
+      "default":["PNL"]
     }
   },
   "validations": [],

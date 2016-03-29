@@ -20,8 +20,7 @@
       "required": true
     },
     "lastname": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "lastAccess": {
       "type": "date"
@@ -30,6 +29,9 @@
       "type": "string",
       "required": true,
       "index": true
+    },
+    "description": {
+      "type": "string"
     },
     "genderShort": {
       "type": "string",
