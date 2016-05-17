@@ -13,11 +13,13 @@
     "hostname": "127.0.0.1"
   },
   "mongodb": {
-    "port": 27017,
+    "port": 23932,
     "database": "marlininternacional",
+    "username": "development",
+    "password": "development",
     "name": "mongodb",
     "connector": "mongodb",
-    "hostname": "127.0.0.1"
+    "hostname": "ds023932.mlab.com"
   },
   "transient": {
     "name": "transient",
