@@ -1,14 +1,14 @@
 {
-  "name": "loopback-clean-stack",
-  "version": "1.0.0",
-  "description": "A Loopback.io clean project with common utilities and settings to start coding quickly",
+  "name": "marint_api",
+  "version": "3.0.0",
+  "description": "A Loopback.io backend project for Marlin Coach Intl. Web App",
   "main": "dist/server/server.js",
   "scripts": {
     "start": "node .",
     "pretest": "gulp build && echo \"jshint . will disabled until ES7 is supported\"",
     "test": "NODE_ENV=test node_modules/.bin/mocha --opts ./dist/test/mocha.opts ./dist/**/*.spec.js"
   },
-  "repository": "git@github.com:garusis/loopback-clean-stack.git",
+  "repository": "git@github.com:garusis/marint_api.git",
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
   "license": "MIT",
   "engines": {
