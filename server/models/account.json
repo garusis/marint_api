@@ -1,0 +1,43 @@
+{
+  "name": "Account",
+  "plural": "accounts",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "credentials": {
+      "type": "hasMany",
+      "model": "AccountCredential",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    },
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccessTokenAccount",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

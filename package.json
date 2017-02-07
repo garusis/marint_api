@@ -1,34 +1,68 @@
 {
-  "name": "marlin",
+  "name": "loopback-clean-stack",
   "version": "1.0.0",
-  "main": "server/server.js",
+  "description": "A Loopback.io clean project with common utilities and settings to start coding quickly",
+  "main": "dist/server/server.js",
   "scripts": {
     "start": "node .",
-    "pretest": "jshint ."
+    "pretest": "gulp build && echo \"jshint . will disabled until ES7 is supported\"",
+    "test": "NODE_ENV=test node_modules/.bin/mocha --opts ./dist/test/mocha.opts ./dist/**/*.spec.js"
+  },
+  "repository": "git@github.com:garusis/loopback-clean-stack.git",
+  "author": "Marcos J. Alvarez <garusis@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "6.1.0"
   },
   "dependencies": {
-    "async": "^1.5.2",
-    "bluebird": "^3.1.1",
-    "compression": "^1.0.3",
-    "cors": "^2.5.2",
-    "lodash": "^3.10.1",
-    "loopback": "^2.22.0",
-    "loopback-boot": "^2.6.5",
-    "loopback-component-explorer": "^2.1.0",
-    "loopback-connector-arangodb": "^1.0.0",
-    "loopback-connector-mongodb": "^1.13.2",
-    "loopback-connector-mysql": "^2.2.0",
-    "loopback-connector-postgresql": "^2.4.0",
-    "loopback-datasource-juggler": "^2.39.0",
-    "serve-favicon": "^2.0.1"
+    "babel-runtime": "^6.22.0",
+    "bluebird": "^3.4.7",
+    "colour": "0.7.1",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
+    "debug": "^2.6.0",
+    "debug-helper": "^1.0.3",
+    "express": "^4.14.1",
+    "helmet": "^3.4.0",
+    "http2": "3.3.6",
+    "lodash": "^4.17.4",
+    "loopback": "^3.2.1",
+    "loopback-boot": "^2.23.0",
+    "loopback-build-model-helper": "^1.0.5",
+    "loopback-component-explorer": "^4.0.0",
+    "loopback-component-storage": "^3.0.0",
+    "loopback-connector-mongodb": "^1.18.0",
+    "loopback-connector-mysql": "^2.4.1",
+    "loopback-connector-postgresql": "^2.7.0",
+    "loopback-ds-timestamp-mixin": "^3.4.0",
+    "moment": "^2.17.1",
+    "node-pushnotifications": "^1.0.14",
+    "nodemailer": "^3.0.2",
+    "options": "^0.0.6",
+    "optjs": "3.2.2",
+    "serve-favicon": "^2.3.2",
+    "storage": "^0.2.0",
+    "strong-cluster-control": "^2.2.3",
+    "strong-error-handler": "^1.2.1",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
-    "grunt-loopback-auto": "0.0.5",
-    "jshint": "^2.5.6"
-  },
-  "repository": {
-    "type": "",
-    "url": ""
-  },
-  "description": "marlin"
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "chai": "^3.5.0",
+    "config": "^1.24.0",
+    "del": "^2.2.2",
+    "eslint": "^3.14.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sourcemaps": "^2.4.0",
+    "loopback-migration-tool": "^1.0.2",
+    "merge-stream": "^1.0.1",
+    "mocha": "^3.2.0",
+    "nsp": "^2.6.2",
+    "run-sequence": "^1.2.2",
+    "supertest": "^3.0.0"
+  }
 }

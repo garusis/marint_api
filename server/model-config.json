@@ -4,17 +4,36 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
+      "./helpers",
       "./models"
     ],
     "mixins": [
       "loopback/common/mixins",
       "loopback/server/mixins",
+      "../../node_modules/loopback-ds-timestamp-mixin",
       "../common/mixins",
       "./mixins"
     ]
   },
+  "ValidationHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "BatchHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "RoleHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "Push": {
+    "dataSource": null,
+    "public": true
+  },
   "User": {
-    "dataSource": "mongodb"
+    "dataSource": "memory",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "memory",
@@ -25,59 +44,39 @@
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "memory",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb",
+    "dataSource": "memory",
     "public": false
   },
-  "Publication": {
-    "dataSource": "mongodb",
-    "public": true
+  "Account": {
+    "dataSource": "memory",
+    "public": false
   },
-  "PublicPublication": {
-    "dataSource": "mongodb",
-    "public": true
+  "AccessTokenAccount": {
+    "dataSource": "memory",
+    "public": false
   },
-  "AppUser": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Instructor": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Student": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Comment": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Testimony": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Gender": {
+  "AdminAccount": {
     "dataSource": "memory",
     "public": true
   },
-  "Course": {
-    "dataSource": "mongodb",
+  "CronAccount": {
+    "dataSource": "memory",
     "public": true
   },
-  "Image": {
-    "dataSource": "transient",
-    "public": false
+  "AccountCredential": {
+    "dataSource": "memory",
+    "public": true
   },
-  "CourseModule": {
-    "dataSource": "transient",
-    "public": false
+  "CredentialProvider": {
+    "dataSource": "memory",
+    "public": true
   },
-  "Video": {
-    "dataSource": "transient",
-    "public": false
+  "AppConstant": {
+    "dataSource": "memory",
+    "public": true
   }
 }

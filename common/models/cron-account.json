@@ -1,0 +1,14 @@
+{
+  "name": "CronAccount",
+  "plural": "cron-accounts",
+  "base": "Account",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,32 @@
+---
+engines:
+  nodesecurity:
+    enabled: true
+    exclude_fingerprints:
+        - cc1454d0b95731d14daacaf037f6a9f3
+        - dfea86b2eb0ba70aded4c2a7d086636f
+  eslint:
+    enabled: true
+    channel: "eslint-3"
+    extensions:
+        - .es6
+        - .js
+        - .jsx
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript:
+    exclude_fingerprints:
+        - b5cd4ea2b22cd91de9da36dfa291ecf3
+        - 96b392f71539e3c7f0eba08777daa147
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+ratings:
+   paths:
+   - "**.js"
+   - "**.jsx"
+   - "**.md"
+exclude_paths: []
