@@ -17,6 +17,14 @@
     "surname": {
       "type": "string",
       "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "index": "true"
+    },
+    "lastAccess": {
+      "type": "date"
     }
   },
   "validations": [],

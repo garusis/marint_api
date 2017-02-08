@@ -1,0 +1,27 @@
+{
+  "name": "Student",
+  "plural": "students",
+  "base": "Account",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "lastAccess": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "gender": {
+      "type": "belongsTo",
+      "model": "Gender",
+      "foreignKey": "gender_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

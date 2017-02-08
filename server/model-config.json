@@ -32,11 +32,11 @@
     "public": true
   },
   "User": {
-    "dataSource": "memory",
+    "dataSource": null,
     "public": false
   },
   "AccessToken": {
-    "dataSource": "memory",
+    "dataSource": null,
     "public": false
   },
   "ACL": {
@@ -44,39 +44,47 @@
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": false
   },
   "Role": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": false
   },
   "Account": {
-    "dataSource": "memory",
+    "dataSource": null,
     "public": false
   },
   "AccessTokenAccount": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": false
   },
   "AdminAccount": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": true
   },
   "CronAccount": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": true
   },
   "AccountCredential": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": true
   },
   "CredentialProvider": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": true
   },
   "AppConstant": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Student": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Gender": {
+    "dataSource": "postgresql",
     "public": true
   }
 }
