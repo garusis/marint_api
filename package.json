@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node .",
     "pretest": "gulp build && echo \"jshint . will disabled until ES7 is supported\"",
-    "migrate": "./node_modules/.bin/lb-migration migrate",
-    "seed": "./node_modules/.bin/lb-migration seed"
+    "test": "node_modules/.bin/mocha --opts ./dist/test/mocha.opts ./dist/**/*.spec.js",
+    "migrate": "gulp build && lb-migration migrate",
+    "seed": "gulp build && lb-migration seed"
   },
   "repository": "git@github.com:garusis/marint_api.git",
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
@@ -29,14 +30,13 @@
     "lodash": "^4.17.4",
     "loopback": "^3.2.1",
     "loopback-boot": "^2.23.0",
-    "loopback-build-model-helper": "^1.0.5",
+    "loopback-build-model-helper": "^1.0.6",
     "loopback-component-explorer": "^4.0.0",
     "loopback-component-storage": "^3.0.0",
     "loopback-connector-mongodb": "^1.18.0",
     "loopback-connector-mysql": "^2.4.1",
     "loopback-connector-postgresql": "^2.7.0",
     "loopback-ds-timestamp-mixin": "^3.4.0",
-    "loopback-migration-tool": "^1.3.3",
     "moment": "^2.17.1",
     "node-pushnotifications": "^1.0.14",
     "nodemailer": "^3.0.2",

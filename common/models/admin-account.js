@@ -12,7 +12,7 @@ module.exports = function (_AdminAccount) {
 
     _AdminAccount.observe('after save', async function (ctx, next) {
       if (ctx.isNewInstance) {
-        await RoleHelper.assignTo('admin',ctx.instance.id)
+        await RoleHelper.assignTo('admin', ctx.instance.id)
       }
       next()
     })

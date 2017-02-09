@@ -2,6 +2,9 @@
 /**
  * Created by garusis on 06/02/17.
  */
+import _ from "lodash"
+import Promise from "bluebird"
+
 
 const admins = [
   {
@@ -13,9 +16,9 @@ const admins = [
   }
 ]
 
-
 module.exports = async function (app) {
   let AdminAccount = app.models.AdminAccount
 
-  await AdminAccount.create(admins)
+  let promises = _.map(admins, (admin) => AdminAccount.create(admin))
+  await Promise.all(promises)
 }

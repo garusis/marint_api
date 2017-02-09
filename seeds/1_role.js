@@ -2,6 +2,8 @@
 /**
  * Created by garusis on 06/02/17.
  */
+import _ from "lodash"
+import Promise from "bluebird"
 
 const roles = [
   {"name": "admin"},
@@ -13,5 +15,6 @@ const roles = [
 module.exports = async function (app) {
   let Role = app.models.Role
 
-  await Role.create(roles)
+  let promises = _.map(roles, (rol) => Role.create(rol))
+  await Promise.all(promises)
 }
