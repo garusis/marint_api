@@ -1,0 +1,42 @@
+{
+  "name": "Image",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "original": {
+      "type": "string",
+      "required": true
+    },
+    "thumb_small": {
+      "type": "string",
+      "required": true
+    },
+    "thumb_medium": {
+      "type": "string",
+      "required": true
+    },
+    "thumb_large": {
+      "type": "string",
+      "required": true
+    },
+    "small": {
+      "type": "string",
+      "required": true
+    },
+    "medium": {
+      "type": "string",
+      "required": true
+    },
+    "large": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

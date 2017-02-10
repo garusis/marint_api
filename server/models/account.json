@@ -44,6 +44,22 @@
         "foreignKey": "account_id",
         "discriminator": "account_type"
       }
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    },
+    "image": {
+      "type": "hasOne",
+      "model": "Image",
+      "polymorphic": {
+        "foreignKey": "imageable_id",
+        "discriminator": "imageable_type"
+      }
     }
   },
   "acls": [],

@@ -57,7 +57,7 @@
   },
   "AccessTokenAccount": {
     "dataSource": "postgresql",
-    "public": false
+    "public": true
   },
   "AdminAccount": {
     "dataSource": "postgresql",
@@ -86,5 +86,45 @@
   "Gender": {
     "dataSource": "postgresql",
     "public": true
+  },
+  "Comment": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "CourseModule": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Course": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "Instructor": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Publication": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Testimony": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "ModuleVideo": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "CourseStudent": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "ModuleStudent": {
+    "dataSource": "postgresql",
+    "public": false
   }
 }

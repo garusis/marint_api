@@ -1,0 +1,40 @@
+{
+  "name": "Course",
+  "plural": "courses",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string",
+      "required": true
+    },
+    "isPublished": {
+      "type": "boolean",
+      "default": false
+    },
+    "price": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "image": {
+      "type": "hasOne",
+      "model": "Image",
+      "polymorphic": {
+        "foreignKey": "imageable_id",
+        "discriminator": "imageable_type"
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

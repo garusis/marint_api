@@ -9,19 +9,28 @@
   "properties": {
     "registrationId": {
       "type": "string"
+    },
+    "account_id": {
+      "type": "number",
+      "index": true,
+      "required": true
+    },
+    "account_type": {
+      "type": "string",
+      "index": true,
+      "required": true
     }
   },
   "validations": [],
   "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "Account",
-      "polymorphic": {
-        "foreignKey": "account_id",
-        "discriminator": "account_type"
-      }
-    }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

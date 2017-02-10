@@ -1,0 +1,53 @@
+{
+  "name": "Publication",
+  "plural": "publications",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "preview": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean",
+      "index": true,
+      "default": false
+    },
+    "tags": {
+      "type": "array",
+      "default": [
+        "PNL"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "polymorphic": {
+        "foreignKey": "publication_id",
+        "discriminator": "publication_type"
+      }
+    },
+    "image": {
+      "type": "hasOne",
+      "model": "Image",
+      "polymorphic": {
+        "foreignKey": "imageable_id",
+        "discriminator": "imageable_type"
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,24 +1,31 @@
 {
-  "name": "Gender",
-  "plural": "genders",
+  "name": "ModuleVideo",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "forceId": false,
   "properties": {
-    "label": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "slug": {
+    "url": {
       "type": "string",
       "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "polymorphic": {
+        "foreignKey": "publication_id",
+        "discriminator": "publication_type"
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

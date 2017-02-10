@@ -1,0 +1,42 @@
+{
+  "name": "Comment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "publisherName": {
+      "type": "string",
+      "required": true
+    },
+    "account_id": {
+      "type": "number",
+      "index": true,
+      "required": true
+    },
+    "account_type": {
+      "type": "string",
+      "index": true,
+      "required": true
+    },
+    "publication_id": {
+      "type": "number",
+      "index": true,
+      "required": true
+    },
+    "publication_type": {
+      "type": "string",
+      "index": true,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

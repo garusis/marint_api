@@ -1,18 +1,25 @@
 {
-  "name": "Gender",
-  "plural": "genders",
+  "name": "Testimony",
+  "plural": "testimonies",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "forceId": false,
   "properties": {
-    "label": {
+    "nameStudent": {
       "type": "string",
       "required": true
     },
-    "slug": {
+    "occupation": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    },
+    "photo": {
       "type": "string",
       "required": true
     }
