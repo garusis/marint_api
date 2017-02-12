@@ -15,7 +15,8 @@
       "type": "string"
     },
     "content": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "isPublished": {
       "type": "boolean",
@@ -27,6 +28,16 @@
       "default": [
         "PNL"
       ]
+    },
+    "account_id": {
+      "type": "number",
+      "index": true,
+      "required": true
+    },
+    "account_type": {
+      "type": "string",
+      "index": true,
+      "required": true
     }
   },
   "validations": [],

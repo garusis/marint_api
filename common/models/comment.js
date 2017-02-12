@@ -1,12 +1,16 @@
 "use strict";
 import ModelBuilder from "loopback-build-model-helper"
+import _ from "lodash"
+import app from "../../server/server"
+import dh from "debug-helper"
 
 module.exports = function (_Comment) {
 
   const builder = new ModelBuilder(Comment, _Comment)
 
   builder.build().then(function () {
-    _Comment.belongsTo("account", {
+
+    _Comment.belongsTo("author", {
       polymorphic: {
         "foreignKey": "account_id",
         "discriminator": "account_type"
@@ -19,7 +23,31 @@ module.exports = function (_Comment) {
         "discriminator": "publication_type"
       }
     })
+
   })
+
+
+  Comment.create = async function (data, options, oldCreate) {
+    //dh.debug.info("myCreate",Function.prototype.toString.call(oldCreate))
+    if (_.isUndefined(oldCreate)) {
+      if (_.isFunction(options)) {
+        oldCreate = options;
+        options = {};
+      } else if (_.isFunction(data)) {
+        oldCreate = data;
+        data = {};
+      }
+    }
+    data = data || {};
+    options = options || {};
+
+    let Account = app.models[data.account_type]
+    let account = await Account.findById(data.account_id)
+    data.publisherName = `${account.name} ${account.surname}`
+
+    let comment = await oldCreate.call(this, data, options)
+    return comment
+  }
 
   function Comment() {
   }
