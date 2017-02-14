@@ -33,6 +33,16 @@
         "foreignKey": "imageable_id",
         "discriminator": "imageable_type"
       }
+    },
+    "instructor": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": "instructor_id"
+    },
+    "modules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "course_id"
     }
   },
   "acls": [],

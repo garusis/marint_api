@@ -58,7 +58,7 @@
       "model": "Image",
       "polymorphic": {
         "foreignKey": "imageable_id",
-        "discriminator": "imageable_type"
+        "discriminator": "account_type"
       }
     }
   },

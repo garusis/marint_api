@@ -17,6 +17,19 @@
   },
   "validations": [],
   "relations": {
+    "module": {
+      "type": "belongsTo",
+      "model": "CourseModule",
+      "foreignKey": "module_id"
+    },
+    "uploader": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": "instructor_id",
+      "options": {
+        "defineUploader": true
+      }
+    },
     "comments": {
       "type": "hasMany",
       "model": "Comment",

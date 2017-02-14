@@ -31,13 +31,13 @@
     },
     "account_id": {
       "type": "number",
-      "index": true,
-      "required": true
+      "required": true,
+      "index": true
     },
     "account_type": {
       "type": "string",
-      "index": true,
-      "required": true
+      "required": true,
+      "index": true
     }
   },
   "validations": [],

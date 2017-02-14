@@ -8,7 +8,23 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "courses": {
+      "type": "hasMany",
+      "model": "Course",
+      "foreignKey": "instructor_id"
+    },
+    "courseModules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "instructor_id"
+    },
+    "videos": {
+      "type": "hasMany",
+      "model": "ModuleVideo",
+      "foreignKey": "instructor_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

@@ -1,8 +1,6 @@
 "use strict";
 import ModelBuilder from "loopback-build-model-helper"
 import _ from "lodash"
-import app from "../../server/server"
-import dh from "debug-helper"
 
 module.exports = function (_Comment) {
 

@@ -16,7 +16,23 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "instructor": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": "instructor_id"
+    },
+    "course": {
+      "type": "belongsTo",
+      "model": "Course",
+      "foreignKey": "course_id"
+    },
+    "videos": {
+      "type": "hasMany",
+      "model": "ModuleVideo",
+      "foreignKey": "module_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }
