@@ -10,7 +10,24 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "course": {
+      "type": "belongsTo",
+      "model": "Course",
+      "foreignKey": "course_id"
+    },
+    "modules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "module_id",
+      "through": "ModuleStudent"
+    },
+    "student": {
+      "type": "belongsTo",
+      "model": "Student",
+      "foreignKey": "student_id"
+    }
+  },
   "acls": [],
   "methods": {}
 }

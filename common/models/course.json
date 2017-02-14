@@ -46,6 +46,12 @@
       "type": "hasMany",
       "model": "CourseModule",
       "foreignKey": "course_id"
+    },
+    "students": {
+      "type": "hasMany",
+      "model": "Student",
+      "foreignKey": "course_id",
+      "through": "CourseStudent"
     }
   },
   "acls": [],

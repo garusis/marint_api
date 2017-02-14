@@ -20,6 +20,11 @@
       "type": "belongsTo",
       "model": "Gender",
       "foreignKey": "gender_id"
+    },
+    "courses": {
+      "type": "hasMany",
+      "model": "CourseStudent",
+      "foreignKey": "student_id"
     }
   },
   "acls": [],
