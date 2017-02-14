@@ -11,8 +11,8 @@ module.exports = function (_Account) {
   const builder = new ModelBuilder(Account, _Account)
 
   app.on("started", function () {
-    setTimeout(()=>dh.debug.info(_.omit(app.models.ModuleVideo.relations.uploader, ["modelFrom"])),2000)
-    setTimeout(()=>dh.debug.info(_.omit(app.models.ModuleVideo.relations.comments, ["modelFrom","modelTo"])),2000)
+    setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.uploader, ["modelFrom", "modelTo"])), 2000)
+    setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.comments, ["modelFrom", "modelTo"])), 2000)
   })
 
   builder.build().then(function () {
@@ -24,17 +24,21 @@ module.exports = function (_Account) {
         return process.nextTick(() => cb(null, false));
       }
 
-      context.model.findOne({where: {id: context.modelId}}, function (err, project) {
-        // A: The datastore produced an error! Pass error to callback
+      let Model = context.model
+      let uploaderRelation = Model.relations.uploader || _.find(Model.relations, (relation) => relation.options.defineUploader)
+      if (!uploaderRelation) {
+        return process.nextTick(() => cb(new Error(`${Model.definition.name} has not an uploader relation`)));
+      }
+
+      context.model.findOne({where: {id: context.modelId}}, function (err, resource) {
         if (err) return cb(err);
-        // A: There's no project by this ID! Pass error to callback
-        if (!project) return cb(new Error("Project not found"));
+        if (!resource) return cb(new Error("Resource not found"));
 
         // Step 2: check if User is part of the Team associated with this Project
         // (using count() because we only want to know if such a record exists)
         var Team = app.models.Team;
         Team.count({
-          ownerId: project.ownerId,
+          ownerId: resource.ownerId,
           memberId: userId
         }, function (err, count) {
           // A: The datastore produced an error! Pass error to callback

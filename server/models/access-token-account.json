@@ -25,10 +25,11 @@
   "relations": {},
   "acls": [
     {
-      "accessType": "READ",
+      "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "ALLOW"
+      "permission": "DENY"
     }
   ],
   "methods": {}

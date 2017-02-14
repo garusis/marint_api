@@ -57,7 +57,7 @@
   },
   "AccessTokenAccount": {
     "dataSource": "postgresql",
-    "public": true
+    "public": false
   },
   "AdminAccount": {
     "dataSource": "postgresql",
@@ -93,7 +93,7 @@
   },
   "CourseModule": {
     "dataSource": "postgresql",
-    "public": true
+    "public": false
   },
   "Course": {
     "dataSource": "postgresql",

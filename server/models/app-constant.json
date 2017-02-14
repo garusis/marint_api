@@ -24,10 +24,10 @@
   "acls": [
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY",
-      "property": "*"
+      "permission": "DENY"
     },
     {
       "accessType": "*",

@@ -36,6 +36,14 @@
       "foreignKey": "module_id"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }
