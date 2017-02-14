@@ -1,6 +1,6 @@
 'use strict';
 import ModelBuilder from "loopback-build-model-helper";
-import Promise from "bluebird"
+import _ from "lodash"
 import app from "../../server/server"
 
 module.exports = function (_Publication) {
@@ -17,21 +17,26 @@ module.exports = function (_Publication) {
 
   })
 
-  _Publication.beforeRemote('create', function (ctx, instance, next) {
-    let accessToken = ctx.req.accessToken
-    let data = ctx.args.data
-    data.account_id = accessToken.account_id
-    data.account_type = accessToken.account_type
-    next()
-  })
+  Publication.create = async function (data, options, oldCreate) {
+    if (_.isUndefined(oldCreate)) {
+      if (_.isFunction(options)) {
+        oldCreate = options;
+        options = {};
+      } else if (_.isFunction(data)) {
+        oldCreate = data;
+        data = {};
+      }
+    }
+    data = data || {};
+    options = options || {};
 
-  _Publication.beforeRemote('prototype.__create__comments', function (ctx, instance, next) {
-    let accessToken = ctx.req.accessToken
-    let data = ctx.args.data
+    let accessToken = options.accessToken
     data.account_id = accessToken.account_id
     data.account_type = accessToken.account_type
-    next()
-  })
+
+    let publication = await oldCreate.call(this, data, options)
+    return publication
+  }
 
   function Publication() {
 

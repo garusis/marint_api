@@ -1,5 +1,6 @@
 "use strict";
 import ModelBuilder from "loopback-build-model-helper"
+import app from "../../server/server"
 import _ from "lodash"
 
 module.exports = function (_Comment) {
@@ -26,7 +27,6 @@ module.exports = function (_Comment) {
 
 
   Comment.create = async function (data, options, oldCreate) {
-    //dh.debug.info("myCreate",Function.prototype.toString.call(oldCreate))
     if (_.isUndefined(oldCreate)) {
       if (_.isFunction(options)) {
         oldCreate = options;
@@ -39,8 +39,13 @@ module.exports = function (_Comment) {
     data = data || {};
     options = options || {};
 
+    let accessToken = options.accessToken
+    data.account_id = accessToken.account_id
+    data.account_type = accessToken.account_type
+
     let Account = app.models[data.account_type]
     let account = await Account.findById(data.account_id)
+
     data.publisherName = `${account.name} ${account.surname}`
 
     let comment = await oldCreate.call(this, data, options)
