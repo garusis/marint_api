@@ -1,7 +1,6 @@
 'use strict';
 import ModelBuilder from "loopback-build-model-helper";
-import _ from "lodash"
-import app from "../../server/server"
+import * as commonOp from "../../server/helpers/common-operations"
 
 module.exports = function (_Publication) {
   const builder = new ModelBuilder(Publication, _Publication)
@@ -17,23 +16,8 @@ module.exports = function (_Publication) {
 
   })
 
-  Publication.create = async function (data, options, oldCreate) {
-    if (_.isUndefined(oldCreate)) {
-      if (_.isFunction(options)) {
-        oldCreate = options;
-        options = {};
-      } else if (_.isFunction(data)) {
-        oldCreate = data;
-        data = {};
-      }
-    }
-    data = data || {};
-    options = options || {};
-
-    let accessToken = options.accessToken
-    data.account_id = accessToken.account_id
-    data.account_type = accessToken.account_type
-
+  Publication.create = async function () {
+    let {data, options, oldCreate} = commonOp.normalizeCreateWithPolymorphicOwner(arguments)
     let publication = await oldCreate.call(this, data, options)
     return publication
   }

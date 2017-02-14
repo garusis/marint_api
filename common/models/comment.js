@@ -1,7 +1,7 @@
 "use strict";
 import ModelBuilder from "loopback-build-model-helper"
+import * as commonOp from "../../server/helpers/common-operations"
 import app from "../../server/server"
-import _ from "lodash"
 
 module.exports = function (_Comment) {
 
@@ -26,26 +26,11 @@ module.exports = function (_Comment) {
   })
 
 
-  Comment.create = async function (data, options, oldCreate) {
-    if (_.isUndefined(oldCreate)) {
-      if (_.isFunction(options)) {
-        oldCreate = options;
-        options = {};
-      } else if (_.isFunction(data)) {
-        oldCreate = data;
-        data = {};
-      }
-    }
-    data = data || {};
-    options = options || {};
-
-    let accessToken = options.accessToken
-    data.account_id = accessToken.account_id
-    data.account_type = accessToken.account_type
+  Comment.create = async function () {
+    let {data, options, oldCreate} = commonOp.normalizeCreateWithPolymorphicOwner(arguments)
 
     let Account = app.models[data.account_type]
     let account = await Account.findById(data.account_id)
-
     data.publisherName = `${account.name} ${account.surname}`
 
     let comment = await oldCreate.call(this, data, options)
