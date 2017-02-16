@@ -58,4 +58,4 @@ jspm_packages
 .strong-pm
 npm-debug.log
 dist
-
+seeds
