@@ -10,8 +10,8 @@
     "TimeStamp": true
   },
   "properties": {
-    "name": {
-      "type": "string",
+    "position": {
+      "type": "number",
       "required": true
     },
     "description": {

@@ -27,7 +27,7 @@ module.exports = function (_Comment) {
 
 
   Comment.create = async function () {
-    let {data, options, oldCreate} = commonOp.normalizeCreateWithPolymorphicOwner(arguments)
+    let {data, options, oldCreate} = await commonOp.normalizeCreateWithPolymorphicOwner(arguments)
 
     let Account = app.models[data.account_type]
     let account = await Account.findById(data.account_id)

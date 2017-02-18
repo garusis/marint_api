@@ -24,6 +24,9 @@
     },
     "price": {
       "type": "number",
+      "postgresql": {
+        "dataType": "REAL"
+      },
       "required": true
     }
   },

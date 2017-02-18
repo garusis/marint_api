@@ -2,6 +2,7 @@
  * Created by garusis on 13/02/17.
  */
 import _ from "lodash"
+import dh from "debug-helper"
 
 /**
  *
@@ -26,8 +27,12 @@ export async function normalizeCreateWithPolymorphicOwner(args, ownerOptions) {
   options = options || {};
 
   let accessToken = options.accessToken
-  data[foreignKey] = accessToken.account_id
-  data[discriminator] = accessToken.account_type
+  if (accessToken) {
+    data[foreignKey] = accessToken.account_id
+    data[discriminator] = accessToken.account_type
+  } else {
+    dh.debug.info("Creating polymorphic Owner without an accessToken")
+  }
 
   return {data, options, oldCreate}
 }

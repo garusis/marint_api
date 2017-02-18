@@ -10,7 +10,10 @@
   },
   "properties": {
     "title": {
-      "type": "string",
+      "type": "string"
+    },
+    "position": {
+      "type": "number",
       "required": true
     },
     "url": {

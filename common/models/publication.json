@@ -26,6 +26,9 @@
       "index": true,
       "default": false
     },
+    "publishedAt": {
+      "type": "date"
+    },
     "tags": {
       "type": "array",
       "default": [

@@ -19,12 +19,12 @@
     },
     "account_id": {
       "type": "number",
-      "required": true,
+      "required": false,
       "index": true
     },
     "account_type": {
       "type": "string",
-      "required": true,
+      "required": false,
       "index": true
     },
     "publication_id": {

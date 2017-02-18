@@ -11,8 +11,8 @@ module.exports = function (_Account) {
   const builder = new ModelBuilder(Account, _Account)
 
   app.on("started", function () {
-    setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.uploader, ["modelFrom", "modelTo"])), 2000)
-    setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.comments, ["modelFrom", "modelTo"])), 2000)
+    //setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.uploader, ["modelFrom", "modelTo"])), 2000)
+    //setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.comments, ["modelFrom", "modelTo"])), 2000)
   })
 
   builder.build().then(function () {
