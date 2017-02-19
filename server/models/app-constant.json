@@ -31,16 +31,16 @@
     },
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
       "permission": "ALLOW"
     },
     {
-      "accessType": "EXECUTE",
+      "property": "getPublic",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "getPublic"
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
