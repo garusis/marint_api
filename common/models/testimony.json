@@ -35,6 +35,7 @@
       "permission": "DENY"
     },
     {
+      "accessType": "*",
       "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
