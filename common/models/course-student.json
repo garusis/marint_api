@@ -8,7 +8,18 @@
   "mixins": {
     "TimeStamp": true
   },
-  "properties": {},
+  "properties": {
+    "course_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "student_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    }
+  },
   "validations": [],
   "relations": {
     "course": {

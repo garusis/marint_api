@@ -36,6 +36,16 @@
     "large": {
       "type": "string",
       "required": true
+    },
+    "imageable_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "imageable_type": {
+      "type": "string",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],

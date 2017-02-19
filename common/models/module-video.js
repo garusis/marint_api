@@ -5,6 +5,8 @@ module.exports = function (_ModuleVideo) {
 
   const builder = new ModelBuilder(ModuleVideo, _ModuleVideo)
 
+  //TODO: attach id on create by remoteMethod
+
   builder.build().then(function () {
 
   })

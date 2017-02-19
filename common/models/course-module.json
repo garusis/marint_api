@@ -16,6 +16,16 @@
     },
     "description": {
       "type": "string"
+    },
+    "course_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],

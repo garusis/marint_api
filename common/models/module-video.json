@@ -19,6 +19,16 @@
     "url": {
       "type": "string",
       "required": true
+    },
+    "module_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],

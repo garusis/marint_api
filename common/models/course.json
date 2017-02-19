@@ -28,6 +28,11 @@
         "dataType": "REAL"
       },
       "required": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],
