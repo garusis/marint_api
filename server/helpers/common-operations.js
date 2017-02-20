@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Created by garusis on 13/02/17.
  */
@@ -12,7 +13,7 @@ import dh from "debug-helper"
  */
 export async function normalizeCreateWithPolymorphicOwner(args, ownerOptions) {
   let [data, options, oldCreate] = args
-  let {foreignKey, discriminator} = ownerOptions || {foreignKey: "account_id", discriminator: "account_type"}
+  let {foreignKey, discriminator} = ownerOptions || {foreignKey: "userId", discriminator: "account_type"}
 
   if (_.isUndefined(oldCreate)) {
     if (_.isFunction(options)) {
@@ -28,11 +29,15 @@ export async function normalizeCreateWithPolymorphicOwner(args, ownerOptions) {
 
   let accessToken = options.accessToken
   if (accessToken) {
-    data[foreignKey] = accessToken.account_id
+    data[foreignKey] = accessToken.userId
     data[discriminator] = accessToken.account_type
   } else {
     dh.debug.info("Creating polymorphic Owner without an accessToken")
   }
 
   return {data, options, oldCreate}
+}
+
+export function instanceOf(instance, base) {
+  return instance && (instance === base || instance.prototype instanceof base)
 }

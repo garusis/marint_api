@@ -9,8 +9,11 @@ module.exports = function (_Publication) {
 
     _Publication.belongsTo("instructor", {
       polymorphic: {
-        "foreignKey": "account_id",
+        "foreignKey": "userId",
         "discriminator": "account_type"
+      },
+      options: {
+        "defineOwner": true
       }
     })
 

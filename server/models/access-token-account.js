@@ -8,8 +8,11 @@ module.exports = function (_AccessTokenAccount) {
   builder.build().then(function () {
     _AccessTokenAccount.belongsTo('user', {
       polymorphic: {
-        "foreignKey": "account_id",
+        "foreignKey": "userId",
         "discriminator": "account_type"
+      },
+      options:{
+        defineOwner: true
       }
     })
   })

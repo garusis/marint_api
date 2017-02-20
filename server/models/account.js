@@ -2,63 +2,55 @@
 import ModelBuilder from "loopback-build-model-helper"
 import dh from "debug-helper"
 import app from "../server"
+import {instanceOf} from "../helpers/common-operations"
 import _ from "lodash"
 
 module.exports = function (_Account) {
 
   //TODO: Update all of its comments to update publisherName
+  //TODO: Add RoleMapping model to fix security issues with polymorphic users.
 
   const builder = new ModelBuilder(Account, _Account)
 
-  app.on("started", function () {
-    //setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.uploader, ["modelFrom", "modelTo"])), 2000)
-    //setTimeout(() => dh.debug.info(_.omit(app.models.ModuleVideo.relations.comments, ["modelFrom", "modelTo"])), 2000)
-  })
-
   builder.build().then(function () {
-    let Role = app.models.Role
+    let models = app.models
+    let User = models.User
+    let Role = models.Role
 
-    Role.registerResolver('$uploader', function (role, context, cb) {
+    Role.registerResolver('$owner', function (role, context, cb) {
       let token = context.accessToken;
-      if (!token) {
+      let AccountModel = models[token.account_type]
+
+      if (!token || !context.modelId) {
         return process.nextTick(() => cb(null, false));
       }
 
       let Model = context.model
-      let uploaderRelation = Model.relations.uploader || _.find(Model.relations, (relation) => relation.options.defineUploader)
+      let uploaderRelation = _.find(Model.relations, (relation) => relation.type === 'belongsTo' && relation.options.defineOwner)
+        || Model.relations.owner || Model.relations.user || Model.relations.account
+        || _.find(Model.relations, function (relation) {
+          return relation.type === 'belongsTo' && instanceOf(relation.modelTo, User) && !relation.options.noDefineOwner
+        })
+
       if (!uploaderRelation) {
-        return process.nextTick(() => cb(new Error(`${Model.definition.name} has not an uploader relation`)));
+        return process.nextTick(() => cb(new Error(`${Model.definition.name} has not an relation defining $owner resource`)));
       }
 
-      context.model.findOne({where: {id: context.modelId}}, function (err, resource) {
+      let where = {id: context.modelId}
+
+      if (!uploaderRelation.polymorphic) {
+        if (!instanceOf(uploaderRelation.modelTo, AccountModel)) return process.nextTick(() => cb(null, false));
+        //Should be instanceOf? OR should be Equals OR Equals or descendent?
+      } else {
+        where[uploaderRelation.polymorphic.discriminator] = token.account_type
+      }
+      where[uploaderRelation.keyFrom] = token.userId
+
+      Model.findOne({where}, function (err, resource) {
         if (err) return cb(err);
-        if (!resource) return cb(new Error("Resource not found"));
-
-        // Step 2: check if User is part of the Team associated with this Project
-        // (using count() because we only want to know if such a record exists)
-        var Team = app.models.Team;
-        Team.count({
-          ownerId: resource.ownerId,
-          memberId: userId
-        }, function (err, count) {
-          // A: The datastore produced an error! Pass error to callback
-          if (err) return cb(err);
-
-          if (count > 0) {
-            // A: YES. At least one Team associated with this User AND Project
-            // callback with TRUE, user is role:`teamMember`
-            return cb(null, true);
-          }
-
-          else {
-            // A: NO, User is not in this Project's Team
-            // callback with FALSE, user is NOT role:`teamMember`
-            return cb(null, false);
-          }
-        })
+        return cb(null, !!resource);
       })
     })
-
 
   })
 

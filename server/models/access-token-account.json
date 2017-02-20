@@ -10,7 +10,7 @@
     "registrationId": {
       "type": "string"
     },
-    "account_id": {
+    "userId": {
       "type": "number",
       "required": true,
       "index": true
