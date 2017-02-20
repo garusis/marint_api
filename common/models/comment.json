@@ -17,7 +17,7 @@
       "type": "string",
       "required": true
     },
-    "account_id": {
+    "userId": {
       "type": "number",
       "required": false,
       "index": true

@@ -41,10 +41,7 @@
     "uploader": {
       "type": "belongsTo",
       "model": "Instructor",
-      "foreignKey": "instructor_id",
-      "options": {
-        "defineUploader": true
-      }
+      "foreignKey": "instructor_id"
     },
     "comments": {
       "type": "hasMany",

@@ -1,6 +1,6 @@
 {
   "name": "Instructor",
-  "plural": "accounts",
+  "plural": "instructors",
   "base": "Account",
   "idInjection": true,
   "options": {

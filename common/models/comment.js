@@ -11,7 +11,7 @@ module.exports = function (_Comment) {
 
     _Comment.belongsTo("author", {
       polymorphic: {
-        "foreignKey": "account_id",
+        "foreignKey": "userId",
         "discriminator": "account_type"
       }
     })
@@ -30,7 +30,7 @@ module.exports = function (_Comment) {
     let {data, options, oldCreate} = await commonOp.normalizeCreateWithPolymorphicOwner(arguments)
 
     let Account = app.models[data.account_type]
-    let account = await Account.findById(data.account_id)
+    let account = await Account.findById(data.userId)
     data.publisherName = `${account.name} ${account.surname}`
 
     let comment = await oldCreate.call(this, data, options)
