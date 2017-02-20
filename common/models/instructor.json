@@ -1,34 +1,43 @@
 {
   "name": "Instructor",
-  "plural": "instructors",
-  "base": "AppUser",
-  "idInjection": false,
+  "plural": "accounts",
+  "base": "Account",
+  "idInjection": true,
   "options": {
     "validateUpsert": true
-  },
-  "mongodb": {
-    "collection": "AppUser"
   },
   "properties": {},
   "validations": [],
   "relations": {
-    "publications": {
+    "courses": {
       "type": "hasMany",
-      "model": "Publication",
-      "foreignKey": "instructorId"
+      "model": "Course",
+      "foreignKey": "instructor_id"
+    },
+    "courseModules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "instructor_id"
+    },
+    "videos": {
+      "type": "hasMany",
+      "model": "ModuleVideo",
+      "foreignKey": "instructor_id"
     }
   },
   "acls": [
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
     },
     {
-      "accessType": "READ",
+      "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
-      "principalId": "$everyone",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

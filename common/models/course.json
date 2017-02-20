@@ -7,8 +7,7 @@
     "validateUpsert": true
   },
   "mixins": {
-    "Timestamp": true,
-    "OwnId": true
+    "TimeStamp": true
   },
   "properties": {
     "name": {
@@ -21,31 +20,63 @@
     },
     "isPublished": {
       "type": "boolean",
-      "index": true,
-      "default": true
+      "default": false
     },
     "price": {
       "type": "number",
+      "postgresql": {
+        "dataType": "REAL"
+      },
       "required": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],
   "relations": {
     "image": {
-      "type": "embedsOne",
+      "type": "hasOne",
       "model": "Image",
-      "property": "imagePreview"
-    },
-    "modules": {
-      "type": "embedsMany",
-      "model": "CourseModule",
-      "property": "moduleList"
+      "polymorphic": {
+        "foreignKey": "imageable_id",
+        "discriminator": "imageable_type"
+      }
     },
     "instructor": {
       "type": "belongsTo",
-      "model": "Instructor"
+      "model": "Instructor",
+      "foreignKey": "instructor_id"
+    },
+    "modules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "course_id"
+    },
+    "students": {
+      "type": "hasMany",
+      "model": "Student",
+      "foreignKey": "course_id",
+      "through": "CourseStudent"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

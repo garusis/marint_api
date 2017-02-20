@@ -1,23 +1,46 @@
 {
   "name": "Student",
   "plural": "students",
-  "base": "AppUser",
-  "idInjection": false,
+  "base": "Account",
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
-  "mongodb": {
-    "collection": "AppUser"
+  "properties": {
+    "lastAccess": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    }
   },
-  "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "gender": {
+      "type": "belongsTo",
+      "model": "Gender",
+      "foreignKey": "gender_id"
+    },
+    "courses": {
+      "type": "hasMany",
+      "model": "CourseStudent",
+      "foreignKey": "student_id"
+    }
+  },
   "acls": [
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

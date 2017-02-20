@@ -1,0 +1,63 @@
+{
+  "name": "ModuleStudent",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "course_student_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "student_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "module_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "courseStudent": {
+      "type": "belongsTo",
+      "model": "CourseStudent",
+      "foreignKey": "course_student_id"
+    },
+    "student": {
+      "type": "belongsTo",
+      "model": "Student",
+      "foreignKey": "student_id"
+    },
+    "module": {
+      "type": "belongsTo",
+      "model": "CourseModule",
+      "foreignKey": "module_id"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

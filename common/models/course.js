@@ -1,3 +1,5 @@
-"use strict";
-module.exports = function (Course) {
+'use strict';
+
+module.exports = function(Course) {
+
 };

@@ -1,14 +1,12 @@
 {
   "name": "Comment",
-  "plural": "comments",
   "base": "PersistedModel",
-  "idInjection": false,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "mixins": {
-    "Timestamp": true,
-    "OwnId": true
+    "TimeStamp": true
   },
   "properties": {
     "content": {
@@ -19,39 +17,42 @@
       "type": "string",
       "required": true
     },
-    "userId": {
-      "type": "string",
+    "account_id": {
+      "type": "number",
+      "required": false,
       "index": true
     },
-    "publicationId": {
+    "account_type": {
       "type": "string",
+      "required": false,
+      "index": true
+    },
+    "publication_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "publication_type": {
+      "type": "string",
+      "required": true,
       "index": true
     }
   },
   "validations": [],
-  "relations": {
-    "user": {
-      "type": "belongsTo",
-      "model": "AppUser",
-      "foreignKey": "userId"
-    },
-    "publication": {
-      "type": "belongsTo",
-      "model": "Publication",
-      "foreignKey": "publicationId"
-    }
-  },
+  "relations": {},
   "acls": [
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
     },
     {
-      "accessType": "WRITE",
+      "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
-      "principalId": "$owner",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

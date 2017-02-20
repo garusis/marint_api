@@ -1,0 +1,19 @@
+"use strict"
+import ModelBuilder from "loopback-build-model-helper"
+
+module.exports = function (_AccessTokenAccount) {
+
+  const builder = new ModelBuilder(AccessTokenAccount, _AccessTokenAccount)
+
+  builder.build().then(function () {
+    _AccessTokenAccount.belongsTo('user', {
+      polymorphic: {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    })
+  })
+
+  function AccessTokenAccount() {
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "ModuleVideo",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "position": {
+      "type": "number",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "module_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "module": {
+      "type": "belongsTo",
+      "model": "CourseModule",
+      "foreignKey": "module_id"
+    },
+    "uploader": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": "instructor_id",
+      "options": {
+        "defineUploader": true
+      }
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "polymorphic": {
+        "foreignKey": "publication_id",
+        "discriminator": "publication_type"
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

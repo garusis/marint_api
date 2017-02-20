@@ -1,24 +1,66 @@
 {
   "name": "CourseModule",
+  "plural": "course-modules",
   "base": "PersistedModel",
   "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
   "mixins": {
-    "OwnId": true
+    "TimeStamp": true
   },
   "properties": {
-    "name": {
-      "type": "string",
+    "position": {
+      "type": "number",
       "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "course_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "instructor_id": {
+      "type": "number",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],
   "relations": {
+    "instructor": {
+      "type": "belongsTo",
+      "model": "Instructor",
+      "foreignKey": "instructor_id"
+    },
+    "course": {
+      "type": "belongsTo",
+      "model": "Course",
+      "foreignKey": "course_id"
+    },
     "videos": {
-      "type": "embedsMany",
-      "model": "Video",
-      "property": "videoList"
+      "type": "hasMany",
+      "model": "ModuleVideo",
+      "foreignKey": "module_id"
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

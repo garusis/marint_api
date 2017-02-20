@@ -1,0 +1,82 @@
+{
+  "name": "Account",
+  "plural": "accounts",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "index": "true"
+    },
+    "lastAccess": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "credentials": {
+      "type": "hasMany",
+      "model": "AccountCredential",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    },
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AccessTokenAccount",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "polymorphic": {
+        "foreignKey": "account_id",
+        "discriminator": "account_type"
+      }
+    },
+    "image": {
+      "type": "hasOne",
+      "model": "Image",
+      "polymorphic": {
+        "foreignKey": "imageable_id",
+        "discriminator": "imageable_type"
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

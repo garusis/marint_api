@@ -2,18 +2,18 @@
   "name": "Gender",
   "plural": "genders",
   "base": "PersistedModel",
-  "idInjection": false,
+  "idInjection": true,
   "options": {
     "validateUpsert": true
   },
+  "forceId": false,
   "properties": {
-    "name": {
+    "label": {
       "type": "string",
       "required": true
     },
-    "short": {
+    "slug": {
       "type": "string",
-      "id": true,
       "required": true
     }
   },
@@ -22,14 +22,16 @@
   "acls": [
     {
       "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
     },
     {
-      "accessType": "READ",
+      "accessType": "*",
+      "property": "*",
       "principalType": "ROLE",
-      "principalId": "$everyone",
+      "principalId": "admin",
       "permission": "ALLOW"
     }
   ],

@@ -1,0 +1,5 @@
+{
+  "app": "./dist/server/server",
+  "src": "./dist/seeds/*.js",
+  "method": "update"
+}

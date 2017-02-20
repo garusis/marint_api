@@ -1,7 +1,13 @@
 {
   "name": "Image",
-  "base": "Model",
-  "idInjection": false,
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
   "properties": {
     "original": {
       "type": "string",
@@ -30,10 +36,35 @@
     "large": {
       "type": "string",
       "required": true
+    },
+    "imageable_id": {
+      "type": "number",
+      "required": true,
+      "index": true
+    },
+    "imageable_type": {
+      "type": "string",
+      "required": true,
+      "index": true
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "property": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

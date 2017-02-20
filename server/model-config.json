@@ -4,20 +4,39 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
+      "./helpers",
       "./models"
     ],
     "mixins": [
       "loopback/common/mixins",
       "loopback/server/mixins",
+      "../../node_modules/loopback-ds-timestamp-mixin",
       "../common/mixins",
       "./mixins"
     ]
   },
+  "ValidationHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "BatchHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "RoleHelper": {
+    "dataSource": null,
+    "public": false
+  },
+  "Push": {
+    "dataSource": null,
+    "public": true
+  },
   "User": {
-    "dataSource": "mongodb"
+    "dataSource": null,
+    "public": false
   },
   "AccessToken": {
-    "dataSource": "memory",
+    "dataSource": null,
     "public": false
   },
   "ACL": {
@@ -25,59 +44,87 @@
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "postgresql",
     "public": false
   },
   "Role": {
-    "dataSource": "mongodb",
+    "dataSource": "postgresql",
     "public": false
   },
-  "Publication": {
-    "dataSource": "mongodb",
+  "Account": {
+    "dataSource": null,
+    "public": false
+  },
+  "AccessTokenAccount": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "AdminAccount": {
+    "dataSource": "postgresql",
     "public": true
   },
-  "PublicPublication": {
-    "dataSource": "mongodb",
+  "CronAccount": {
+    "dataSource": "postgresql",
     "public": true
   },
-  "AppUser": {
-    "dataSource": "mongodb",
+  "AccountCredential": {
+    "dataSource": "postgresql",
     "public": true
   },
-  "Instructor": {
-    "dataSource": "mongodb",
+  "CredentialProvider": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "AppConstant": {
+    "dataSource": "postgresql",
     "public": true
   },
   "Student": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Comment": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Testimony": {
-    "dataSource": "mongodb",
+    "dataSource": "postgresql",
     "public": true
   },
   "Gender": {
-    "dataSource": "memory",
+    "dataSource": "postgresql",
     "public": true
   },
-  "Course": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "Image": {
-    "dataSource": "transient",
+  "Comment": {
+    "dataSource": "postgresql",
     "public": false
   },
   "CourseModule": {
-    "dataSource": "transient",
+    "dataSource": "postgresql",
     "public": false
   },
-  "Video": {
-    "dataSource": "transient",
+  "Course": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "Instructor": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Publication": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "Testimony": {
+    "dataSource": "postgresql",
+    "public": true
+  },
+  "ModuleVideo": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "CourseStudent": {
+    "dataSource": "postgresql",
+    "public": false
+  },
+  "ModuleStudent": {
+    "dataSource": "postgresql",
     "public": false
   }
 }
