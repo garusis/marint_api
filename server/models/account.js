@@ -21,7 +21,7 @@ module.exports = function (_Account) {
       let token = context.accessToken;
       let AccountModel = models[token.account_type]
 
-      if (!token) {
+      if (!token || !context.modelId) {
         return process.nextTick(() => cb(null, false));
       }
 
@@ -48,7 +48,7 @@ module.exports = function (_Account) {
 
       Model.findOne({where}, function (err, resource) {
         if (err) return cb(err);
-        if (!resource) return cb(null, false);
+        return cb(null, !!resource);
       })
     })
 
