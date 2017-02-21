@@ -22,16 +22,16 @@
   },
   "validations": [],
   "relations": {
+    "modules": {
+      "type": "hasMany",
+      "model": "CourseModule",
+      "foreignKey": "course_student_id",
+      "through": "ModuleStudent"
+    },
     "course": {
       "type": "belongsTo",
       "model": "Course",
       "foreignKey": "course_id"
-    },
-    "modules": {
-      "type": "hasMany",
-      "model": "CourseModule",
-      "foreignKey": "module_id",
-      "through": "ModuleStudent"
     },
     "student": {
       "type": "belongsTo",

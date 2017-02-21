@@ -37,7 +37,7 @@
       "model": "Student",
       "foreignKey": "student_id"
     },
-    "module": {
+    "courseModule": {
       "type": "belongsTo",
       "model": "CourseModule",
       "foreignKey": "module_id"
