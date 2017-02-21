@@ -10,6 +10,8 @@ import ModelBuilder from "loopback-build-model-helper"
 
 let app = loopback()
 export default app
+module.exports = app //to keep compatibility with lb-ng
+
 if (process.env.NODE_ENV === 'production') {
   if (cluster.isWorker) {
     startWorker()

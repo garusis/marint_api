@@ -8,7 +8,8 @@
     "pretest": "gulp build && echo \"jshint . will disabled until ES7 is supported\"",
     "test": "node_modules/.bin/mocha --opts ./dist/test/mocha.opts ./dist/**/*.spec.js",
     "migrate": "gulp build && lb-migration migrate",
-    "seed": "gulp build && lb-migration seed"
+    "seed": "gulp build && lb-migration seed",
+    "lb-models": "gulp build && lb-ng ./dist/server/server.js ../marlininternacional_web/development/models/lb-services.js"
   },
   "repository": "git@github.com:garusis/marint_api.git",
   "author": "Marcos J. Alvarez <garusis@gmail.com>",
