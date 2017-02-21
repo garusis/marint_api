@@ -26,6 +26,12 @@ module.exports = function (_Account) {
       }
 
       let Model = context.model
+      if (Model === AccountModel) {
+        //is an instance of the same Model
+        return process.nextTick(() => cb(null, token.userId === +context.modelId));
+      }
+
+
       let uploaderRelation = _.find(Model.relations, (relation) => relation.type === 'belongsTo' && relation.options.defineOwner)
         || Model.relations.owner || Model.relations.user || Model.relations.account
         || _.find(Model.relations, function (relation) {
@@ -33,14 +39,17 @@ module.exports = function (_Account) {
         })
 
       if (!uploaderRelation) {
-        return process.nextTick(() => cb(new Error(`${Model.definition.name} has not an relation defining $owner resource`)));
+        if (instanceOf(Model, User)) {
+          return process.nextTick(() => cb(null, false));
+        } else {
+          return process.nextTick(() => cb(new Error(`${Model.definition.name} has not an relation defining $owner resource`)));
+        }
       }
 
       let where = {id: context.modelId}
 
       if (!uploaderRelation.polymorphic) {
         if (!instanceOf(uploaderRelation.modelTo, AccountModel)) return process.nextTick(() => cb(null, false));
-        //Should be instanceOf? OR should be Equals OR Equals or descendent?
       } else {
         where[uploaderRelation.polymorphic.discriminator] = token.account_type
       }
