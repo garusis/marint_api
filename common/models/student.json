@@ -12,6 +12,10 @@
     },
     "description": {
       "type": "string"
+    },
+    "firstPassword": {
+      "type": "boolean",
+      "default": true
     }
   },
   "validations": [],
