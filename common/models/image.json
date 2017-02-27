@@ -25,6 +25,10 @@
       "type": "string",
       "required": true
     },
+    "thumb_xlarge": {
+      "type": "string",
+      "required": true
+    },
     "small": {
       "type": "string",
       "required": true
@@ -34,6 +38,10 @@
       "required": true
     },
     "large": {
+      "type": "string",
+      "required": true
+    },
+    "xlarge": {
       "type": "string",
       "required": true
     },
