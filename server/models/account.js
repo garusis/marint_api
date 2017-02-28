@@ -2,7 +2,7 @@
 import ModelBuilder from "loopback-build-model-helper"
 import dh from "debug-helper"
 import app from "../server"
-import {instanceOf} from "../helpers/common-operations"
+import { instanceOf } from "../helpers/common-operations"
 import _ from "lodash"
 
 module.exports = function (_Account) {
@@ -21,7 +21,7 @@ module.exports = function (_Account) {
       let token = context.accessToken;
       let AccountModel = models[token.account_type]
 
-      if (!token || !context.modelId) {
+      if (!token || token.id === "$anonymous" || !context.modelId) {
         return process.nextTick(() => cb(null, false));
       }
 
@@ -30,7 +30,6 @@ module.exports = function (_Account) {
         //is an instance of the same Model
         return process.nextTick(() => cb(null, token.userId === +context.modelId));
       }
-
 
       let uploaderRelation = _.find(Model.relations, (relation) => relation.type === 'belongsTo' && relation.options.defineOwner)
         || Model.relations.owner || Model.relations.user || Model.relations.account
@@ -63,7 +62,7 @@ module.exports = function (_Account) {
 
   })
 
-  function Account() {
+  function Account () {
   }
 
 }
