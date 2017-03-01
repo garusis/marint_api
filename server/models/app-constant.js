@@ -26,11 +26,15 @@ module.exports = function (_AppConstant) {
 
     constants = await _AppConstant.find({})
     constants = _.keyBy(constants, "name")
+
+    constants.RECAPTCHA_KEY = {value: process.env.RECAPTCHA_PUBLIC, name: "RECAPTCHA_KEY", isPublic: true}
+
     hasChanges = false
   }
 
   AppConstant.getPublic = async function () {
-    return await _AppConstant.find({where: {isPublic: true}})
+    await AppConstant.load()
+    return _.filter(constants, "isPublic")
   }
   builder.remoteMethod("getPublic", {
     http: {
@@ -39,7 +43,6 @@ module.exports = function (_AppConstant) {
     accepts: [],
     returns: {root: true, type: "array"}
   })
-
 
   /**
    *
@@ -50,7 +53,6 @@ module.exports = function (_AppConstant) {
     return constants[name].value
   }
 
-
-  function AppConstant() {
+  function AppConstant () {
   }
 }
