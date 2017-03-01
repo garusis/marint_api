@@ -45,6 +45,7 @@
     "nodemailer": "^3.0.2",
     "options": "^0.0.6",
     "optjs": "3.2.2",
+    "request-promise": "^4.1.1",
     "serve-favicon": "^2.3.2",
     "storage": "^0.2.0",
     "strong-cluster-control": "^2.2.3",
