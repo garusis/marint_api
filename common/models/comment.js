@@ -25,9 +25,10 @@ module.exports = function (_Comment) {
 
   })
 
-
   Comment.create = async function () {
     let {data, options, oldCreate} = await commonOp.normalizeCreateWithPolymorphicOwner(arguments)
+
+
 
     if (data.userId) {
       let Account = app.models[data.account_type]
@@ -39,7 +40,7 @@ module.exports = function (_Comment) {
     return comment
   }
 
-  function Comment() {
+  function Comment () {
   }
 
 };
