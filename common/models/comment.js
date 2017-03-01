@@ -38,8 +38,8 @@ module.exports = function (_Comment) {
       err.statusCode = 401
       err.message = "Invalid Captcha"
 
-      let recaptchaResponse = data['g-recaptcha-response']
-      delete data['g-recaptcha-response']
+      let recaptchaResponse = data.gRecaptchaResponse
+      delete data.gRecaptchaResponse
       if(!recaptchaResponse){
         throw err
       }
@@ -48,7 +48,7 @@ module.exports = function (_Comment) {
         json: true,
         body: {
           secret:process.env.RECAPTCHA_SECRET,
-          response: data['g-recaptcha-response'],
+          response: recaptchaResponse,
           remoteip: options.remoteIp
         }
       })
