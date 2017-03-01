@@ -40,20 +40,20 @@ module.exports = function (_Comment) {
 
       let recaptchaResponse = data.gRecaptchaResponse
       delete data.gRecaptchaResponse
-      if(!recaptchaResponse){
+      if (!recaptchaResponse) {
         throw err
       }
 
       let response = await request.post(process.env.RECAPTCHA_VERIFY_URL, {
         json: true,
-        body: {
-          secret:process.env.RECAPTCHA_SECRET,
+        qs: {
+          secret: process.env.RECAPTCHA_SECRET,
           response: recaptchaResponse,
           remoteip: options.remoteIp
         }
       })
 
-      if(!response.success){
+      if (!response.success) {
         throw err
       }
     }
