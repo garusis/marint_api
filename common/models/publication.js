@@ -27,7 +27,7 @@ module.exports = function (_Publication) {
 
 
   Publication.create = async function () {
-    let {data, options, oldCreate} = await commonOp.normalizeCreateWithPolymorphicOwner(arguments)
+    let {data, options, oldCreate} = await commonOp.normalizeCreateWithOwner(arguments, true)
     let publication = await oldCreate.call(this, data, options)
     return publication
   }

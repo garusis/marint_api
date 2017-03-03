@@ -29,37 +29,27 @@ export async function normalizeCreateArguments (args) {
 
 /**
  *
- * @param {Array|Arguments} args
- * @param {Object} [ownerOptions]
- * @return {Promise.<{data: *, options: *, oldCreate: *}>}
+ * @param args
+ * @param {boolean} [isPolymorphic] default: false
+ * @param {object} [ownerOptions] default: {foreignKey: "userId", discriminator: "account_type"}
+ * @return {Promise.<{data: Promise.data, options: Promise.options, oldCreate: Promise.oldCreate}>}
  */
-export async function normalizeCreateWithPolymorphicOwner(args, ownerOptions) {
+export async function normalizeCreateWithOwner(args, isPolymorphic, ownerOptions) {
   let {data, options, oldCreate} = await normalizeCreateArguments(args)
+
+  if(_.isObject(isPolymorphic)){
+    ownerOptions = isPolymorphic
+    isPolymorphic = false
+  }
+  isPolymorphic = isPolymorphic || false
+
   let {foreignKey, discriminator} = ownerOptions || {foreignKey: "userId", discriminator: "account_type"}
 
   let accessToken = options.accessToken
   if (accessToken) {
-    data[foreignKey] = accessToken.userId
-    data[discriminator] = accessToken.account_type
-  } else {
-    dh.debug.info("Creating polymorphic Owner without an accessToken")
-  }
-
-  return {data, options, oldCreate}
-}
-
-/**
- *
- * @param args
- * @param ownerOptions
- * @return {Promise.<{data: Promise.data, options: Promise.options, oldCreate: Promise.oldCreate}>}
- */
-export async function normalizeCreateWithOwner(args, ownerOptions) {
-  let {data, options, oldCreate} = await normalizeCreateArguments(args)
-  let {foreignKey} = ownerOptions || {foreignKey: "userId"}
-
-  let accessToken = options.accessToken
-  if (accessToken) {
+    if(isPolymorphic){
+      data[discriminator] = accessToken.account_type
+    }
     data[foreignKey] = accessToken.userId
   } else {
     dh.debug.info("Creating Owner without an accessToken")
