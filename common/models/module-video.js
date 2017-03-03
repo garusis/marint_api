@@ -1,6 +1,7 @@
 'use strict';
 import ModelBuilder from "loopback-build-model-helper"
 import * as commonOp from "../../server/helpers/common-operations"
+import app from "../../server/server"
 
 module.exports = function (_ModuleVideo) {
 
