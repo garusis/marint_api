@@ -2,6 +2,7 @@
   "name": "ModuleVideo",
   "base": "PersistedModel",
   "idInjection": true,
+  "plural": "videos",
   "options": {
     "validateUpsert": true
   },
