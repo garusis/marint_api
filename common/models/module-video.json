@@ -71,7 +71,19 @@
       "accessType": "*",
       "property": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "instructor",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$video_viewer",
       "permission": "ALLOW"
     }
   ],

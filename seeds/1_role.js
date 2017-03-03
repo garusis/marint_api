@@ -7,7 +7,8 @@ import Promise from "bluebird"
 
 const roles = [
   {"name": "admin"},
-  {"name": "app_user"},
+  {"name": "student"},
+  {"name": "instructor"},
   {"name": "cron_executer"}
 ]
 
