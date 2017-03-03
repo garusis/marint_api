@@ -85,6 +85,18 @@
       "principalType": "ROLE",
       "principalId": "$video_viewer",
       "permission": "ALLOW"
+    },
+    {
+      "property": "__create__comments",
+      "principalType": "ROLE",
+      "principalId": "$video_viewer",
+      "permission": "ALLOW"
+    },
+    {
+      "property": "__create__comments",
+      "principalType": "ROLE",
+      "principalId": "instructor",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
