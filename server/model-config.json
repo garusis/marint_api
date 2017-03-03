@@ -117,7 +117,7 @@
   },
   "ModuleVideo": {
     "dataSource": "postgresql",
-    "public": false
+    "public": true
   },
   "CourseStudent": {
     "dataSource": "postgresql",

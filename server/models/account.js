@@ -31,13 +31,13 @@ module.exports = function (_Account) {
         return process.nextTick(() => cb(null, token.userId === +context.modelId));
       }
 
-      let uploaderRelation = _.find(Model.relations, (relation) => relation.type === 'belongsTo' && relation.options.defineOwner)
+      let ownerRelation = _.find(Model.relations, (relation) => relation.type === 'belongsTo' && relation.options.defineOwner)
         || Model.relations.owner || Model.relations.user || Model.relations.account
         || _.find(Model.relations, function (relation) {
           return relation.type === 'belongsTo' && instanceOf(relation.modelTo, User) && !relation.options.noDefineOwner
         })
 
-      if (!uploaderRelation) {
+      if (!ownerRelation) {
         if (instanceOf(Model, User)) {
           return process.nextTick(() => cb(null, false));
         } else {
@@ -47,12 +47,12 @@ module.exports = function (_Account) {
 
       let where = {id: context.modelId}
 
-      if (!uploaderRelation.polymorphic) {
-        if (!instanceOf(uploaderRelation.modelTo, AccountModel)) return process.nextTick(() => cb(null, false));
+      if (!ownerRelation.polymorphic) {
+        if (!instanceOf(ownerRelation.modelTo, AccountModel)) return process.nextTick(() => cb(null, false));
       } else {
-        where[uploaderRelation.polymorphic.discriminator] = token.account_type
+        where[ownerRelation.polymorphic.discriminator] = token.account_type
       }
-      where[uploaderRelation.keyFrom] = token.userId
+      where[ownerRelation.keyFrom] = token.userId
 
       Model.findOne({where}, function (err, resource) {
         if (err) return cb(err);
