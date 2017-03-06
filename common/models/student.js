@@ -9,6 +9,7 @@ module.exports = function(_Student) {
     let RoleHelper = app.models.RoleHelper
 
     _Student.nestRemoting("courses")
+    _Student.nestRemoting("comments")
 
     _Student.observe('before save', function(ctx, next) {
 
