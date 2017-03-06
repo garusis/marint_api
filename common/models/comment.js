@@ -6,22 +6,25 @@ import app from "../../server/server"
 
 module.exports = function (_Comment) {
 
-  _Comment.belongsTo("author", {
-    polymorphic: {
-      "foreignKey": "userId",
-      "discriminator": "account_type"
-    }
-  })
-
-  _Comment.belongsTo("publication", {
-    polymorphic: {
-      "foreignKey": "publication_id",
-      "discriminator": "publication_type"
-    }
-  })
-
   const builder = new ModelBuilder(Comment, _Comment)
-  builder.build().then(function () {})
+
+  builder.build().then(function () {
+
+    _Comment.belongsTo("author", {
+      polymorphic: {
+        "foreignKey": "userId",
+        "discriminator": "account_type"
+      }
+    })
+
+    _Comment.belongsTo("publication", {
+      polymorphic: {
+        "foreignKey": "publication_id",
+        "discriminator": "publication_type"
+      }
+    })
+
+  })
 
   Comment.create = async function () {
     let {data, options, oldCreate} = await commonOp.normalizeCreateWithOwner(arguments, true)

@@ -17,7 +17,7 @@ module.exports = function (_Account) {
     let User = models.User
     let Role = models.Role
 
-    _Account.nestRemoting("comments")
+    process.nextTick(() => _Account.nestRemoting("comments"))
 
     Role.registerResolver('$owner', function (role, context, cb) {
       let token = context.accessToken;
