@@ -53,7 +53,7 @@
       "permission": "ALLOW"
     },
     {
-      "property": "patchAttributes",
+      "property": "patchOrCreate",
       "principalType": "ROLE",
       "principalId": "$owner",
       "permission": "ALLOW"
