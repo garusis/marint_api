@@ -101,7 +101,7 @@
   },
   "Image": {
     "dataSource": "postgresql",
-    "public": false
+    "public": true
   },
   "Instructor": {
     "dataSource": "postgresql",

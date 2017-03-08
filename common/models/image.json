@@ -1,6 +1,7 @@
 {
   "name": "Image",
   "base": "PersistedModel",
+  "plural": "images",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -71,6 +72,12 @@
       "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "property": "uploadProfileImage",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

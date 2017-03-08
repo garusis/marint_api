@@ -5,8 +5,8 @@ import boot from "loopback-boot"
 import cluster from "cluster"
 import control from "strong-cluster-control"
 import moment from "moment"
+import multer from "multer"
 import ModelBuilder from "loopback-build-model-helper"
-
 
 let app = loopback()
 export default app
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
   startWorker()
 }
 
-function startWorker() {
+function startWorker () {
   app.start = function () {
     // start the web server
     return app.listen(function () {
@@ -52,6 +52,13 @@ function startWorker() {
     app.use("parse", loopback.token({
       model: app.models.AccessTokenAccount
     }));
+
+    let uploader = multer({
+      storage: multer.memoryStorage(),
+      limits: {fileSize: 5000000, files: 1}
+    })
+
+    app.post(`${app.get("restApiRoot")}/${app.models.Image.settings.plural}/profile-image`, uploader.single('image'))
 
     // start the server if `$ node server.js`
     if (require.main === module)
