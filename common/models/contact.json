@@ -7,7 +7,11 @@
     "validateUpsert": true
   },
   "properties": {
-    "from": {
+    "to": {
+      "type": "string",
+      "required": true
+    },
+    "toName": {
       "type": "string",
       "required": true
     },
