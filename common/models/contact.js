@@ -57,8 +57,8 @@ module.exports = function (_Contact) {
       data.to = account.email
     }
 
-    let comment = await oldCreate.call(this, data, options)
-    return comment
+    let contact = await oldCreate.call(this, data, options)
+    return contact
   }
 
   function Contact () {}
