@@ -128,7 +128,7 @@
     "public": false
   },
   "Contact": {
-    "dataSource": null,
+    "dataSource": "postgresql",
     "public": true
   }
 }

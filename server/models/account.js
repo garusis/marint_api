@@ -1,5 +1,6 @@
 'use strict'
 import ModelBuilder from "loopback-build-model-helper"
+import request from "request-promise"
 import dh from "debug-helper"
 import app from "../server"
 import { instanceOf } from "../helpers/common-operations"
@@ -58,6 +59,31 @@ module.exports = function (_Account) {
         if (err) return cb(err);
         return cb(null, !!resource);
       })
+    })
+
+    Role.registerResolver('human', function (role, context, cb) {
+
+      let {data, options} = context.remotingContext.args
+      let recaptchaResponse = data.gRecaptchaResponse
+      delete data.gRecaptchaResponse
+
+      if (!recaptchaResponse) {
+        return process.nextTick(() => cb(null, false))
+      }
+
+      request
+        .post(process.env.RECAPTCHA_VERIFY_URL, {
+          json: true,
+          qs: {
+            secret: process.env.RECAPTCHA_SECRET,
+            response: recaptchaResponse,
+            remoteip: options.remoteIp
+          }
+        })
+        .then(function (response) {
+          cb(null, !!response.success)
+        })
+        .catch(cb)
     })
 
   })

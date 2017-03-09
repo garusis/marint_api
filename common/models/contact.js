@@ -1,6 +1,7 @@
 "use strict"
 import ModelBuilder from "loopback-build-model-helper"
 import loopback from "loopback"
+import path from "path"
 import dh from "debug-helper"
 import app from "../../server/server"
 
