@@ -24,10 +24,10 @@
     },
     "price": {
       "type": "number",
+      "required": true,
       "postgresql": {
         "dataType": "REAL"
-      },
-      "required": true
+      }
     },
     "instructor_id": {
       "type": "number",
@@ -65,17 +65,17 @@
   "acls": [
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "DENY",
+      "property": "*"
     },
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
       "accessType": "READ",

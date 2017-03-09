@@ -68,23 +68,23 @@
   "acls": [
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "DENY",
+      "property": "*"
     },
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$owner",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
       "accessType": "READ",
@@ -93,10 +93,10 @@
       "permission": "ALLOW"
     },
     {
-      "property": "__create__comments",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "__create__comments"
     }
   ],
   "methods": {}

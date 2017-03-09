@@ -126,5 +126,9 @@
   "ModuleStudent": {
     "dataSource": "postgresql",
     "public": false
+  },
+  "Contact": {
+    "dataSource": null,
+    "public": true
   }
 }

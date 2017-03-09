@@ -1,7 +1,7 @@
 {
   "name": "Image",
-  "base": "PersistedModel",
   "plural": "images",
+  "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -62,23 +62,23 @@
   "acls": [
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "DENY",
+      "property": "*"
     },
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
-      "property": "uploadProfileImage",
       "principalType": "ROLE",
       "principalId": "$authenticated",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "uploadProfileImage"
     }
   ],
   "methods": {}

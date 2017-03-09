@@ -1,8 +1,8 @@
 {
   "name": "ModuleVideo",
+  "plural": "videos",
   "base": "PersistedModel",
   "idInjection": true,
-  "plural": "videos",
   "options": {
     "validateUpsert": true
   },
@@ -56,24 +56,24 @@
   "acls": [
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
+      "permission": "DENY",
+      "property": "*"
     },
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "admin",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
       "accessType": "*",
-      "property": "*",
       "principalType": "ROLE",
       "principalId": "$owner",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "*"
     },
     {
       "accessType": "READ",
@@ -88,16 +88,16 @@
       "permission": "ALLOW"
     },
     {
-      "property": "__create__comments",
       "principalType": "ROLE",
       "principalId": "$video_viewer",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "__create__comments"
     },
     {
-      "property": "__create__comments",
       "principalType": "ROLE",
       "principalId": "instructor",
-      "permission": "ALLOW"
+      "permission": "ALLOW",
+      "property": "__create__comments"
     }
   ],
   "methods": {}
