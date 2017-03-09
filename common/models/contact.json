@@ -30,6 +30,18 @@
   "validations": [],
   "relations": {},
   "acls": [
+    {
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "principalType": "ROLE",
+      "principalId": "human",
+      "permission": "ALLOW",
+      "property": "create"
+    }
   ],
   "methods": {}
 }
