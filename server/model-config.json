@@ -23,6 +23,10 @@
     "dataSource": null,
     "public": false
   },
+  "Mailer": {
+    "dataSource": null,
+    "public": false
+  },
   "RoleHelper": {
     "dataSource": null,
     "public": false

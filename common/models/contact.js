@@ -13,9 +13,10 @@ module.exports = function (_Contact) {
   const CONTACT_TEMPLATE_ADMIN = path.resolve(__dirname, '../../server/views/contact_us_admin.ejs')
 
   builder.build().then(function () {
-    const Mailer = app.models.Mailer
 
-    _Contact.observe('after create', async function (ctx, next) {
+
+    _Contact.observe('after save', async function (ctx, next) {
+      const Mailer = app.models.Mailer
       if (ctx.isNewInstance) {
         let contactRequest = ctx.instance
 
@@ -50,7 +51,7 @@ module.exports = function (_Contact) {
     let {data, options, oldCreate} = await commonOp.normalizeCreateWithOwner(arguments)
     let token =options.accessToken;
 
-    if (token.userId) {
+    if (token) {
       let Account = app.models[token.account_type]
       let account = await Account.findById(token.userId)
       data.toName = `${account.name} ${account.surname}`
