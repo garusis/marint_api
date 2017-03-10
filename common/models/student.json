@@ -10,9 +10,6 @@
     "lastAccess": {
       "type": "date"
     },
-    "description": {
-      "type": "string"
-    },
     "firstPassword": {
       "type": "boolean",
       "default": true

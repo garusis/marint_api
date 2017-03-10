@@ -23,8 +23,15 @@
       "required": true,
       "index": "true"
     },
+    "description": {
+      "type": "string"
+    },
     "lastAccess": {
       "type": "date"
+    },
+    "socialNetworks": {
+      "type": "object",
+      "default": {}
     }
   },
   "validations": [],
