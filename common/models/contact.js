@@ -32,7 +32,7 @@ module.exports = function (_Contact) {
         let optionsAdmin = {
           from: process.env.FROM_CONTACT_EMAIL,
           to: process.env.FROM_CONTACT_EMAIL,
-          subject: 'Nos han contactado',
+          subject: 'Nos han contactado: '+contactRequest.subject,
           data: contactRequest
         };
         optionsAdmin.html = templateAdmin(optionsAdmin)
