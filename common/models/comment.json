@@ -1,7 +1,7 @@
 {
   "name": "Comment",
   "base": "PersistedModel",
-  "plurar": "comments",
+  "plural": "comments",
   "idInjection": true,
   "options": {
     "validateUpsert": true
