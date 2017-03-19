@@ -1,6 +1,7 @@
 {
   "name": "Comment",
   "base": "PersistedModel",
+  "plurar": "comments",
   "idInjection": true,
   "options": {
     "validateUpsert": true
@@ -54,6 +55,12 @@
       "principalId": "admin",
       "permission": "ALLOW",
       "property": "*"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "instructor",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
