@@ -54,6 +54,12 @@
       "principalId": "$owner",
       "permission": "ALLOW",
       "property": "patchOrCreate"
+    },
+    {
+      "property": "__update__image",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}
