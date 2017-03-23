@@ -35,6 +35,18 @@ module.exports = function (_ModuleVideo) {
         })
         .catch(cb)
     })
+
+    _ModuleVideo.afterRemote("prototype.__get__comments", function (context, comments, next) {
+      context.result = comments.map(function (comment) {
+        if (comment.__data.author) {
+          comment = comment.toJSON();
+          comment.authorImage = comment.author.image;
+          delete comment.author
+        }
+        return comment;
+      });
+      next(null);
+    })
   })
 
   ModuleVideo.create = async function () {
