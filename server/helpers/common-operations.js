@@ -8,36 +8,14 @@ import dh from "debug-helper"
 /**
  *
  * @param args
- * @return {Promise.<{data: *, options: *, oldCreate: *}>}
- */
-export async function normalizeCreateArguments (args) {
-  let [data, options, oldCreate] = args
-  if (_.isUndefined(oldCreate)) {
-    if (_.isFunction(options)) {
-      oldCreate = options
-      options = {}
-    } else if (_.isFunction(data)) {
-      oldCreate = data
-      data = {}
-    }
-  }
-  data = data || {}
-  options = options || {}
-
-  return {data, options, oldCreate}
-}
-
-/**
- *
- * @param args
  * @param {boolean} [isPolymorphic] default: false
  * @param {object} [ownerOptions] default: {foreignKey: "userId", discriminator: "account_type"}
  * @return {Promise.<{data: Promise.data, options: Promise.options, oldCreate: Promise.oldCreate}>}
  */
-export async function normalizeCreateWithOwner(args, isPolymorphic, ownerOptions) {
-  let {data, options, oldCreate} = await normalizeCreateArguments(args)
+export async function normalizeCreateWithOwner (args, isPolymorphic, ownerOptions) {
+  let [data, options, oldCreate] = await normalizeArgsObjOptionsFunction(args)
 
-  if(_.isObject(isPolymorphic)){
+  if (_.isObject(isPolymorphic)) {
     ownerOptions = isPolymorphic
     isPolymorphic = false
   }
@@ -47,7 +25,7 @@ export async function normalizeCreateWithOwner(args, isPolymorphic, ownerOptions
 
   let accessToken = options.accessToken
   if (accessToken) {
-    if(isPolymorphic){
+    if (isPolymorphic) {
       data[discriminator] = accessToken.account_type
     }
     data[foreignKey] = accessToken.userId
@@ -58,6 +36,37 @@ export async function normalizeCreateWithOwner(args, isPolymorphic, ownerOptions
   return {data, options, oldCreate}
 }
 
-export function instanceOf(instance, base) {
+export async function normalizeArgsObjOptionsFunction (args) {
+  let [obj, options, fn] = args
+  if (_.isUndefined(fn)) {
+    if (_.isFunction(options)) {
+      fn = options
+      options = {}
+    } else if (_.isFunction(obj)) {
+      fn = obj
+      obj = {}
+    }
+  }
+  obj = obj || {}
+  options = options || {}
+
+  return [obj, options, fn]
+}
+
+export async function normalizeFindWithInclude (args) {
+  let [filter, options, oldFind] = await normalizeArgsObjOptionsFunction(args)
+
+  if (!filter.include) {
+    filter.include = []
+  }
+
+  if(!_.isArray(filter.include)){
+    filter.include = [filter.include]
+  }
+
+  return {filter, options, oldFind}
+}
+
+export function instanceOf (instance, base) {
   return instance && (instance === base || instance.prototype instanceof base)
 }

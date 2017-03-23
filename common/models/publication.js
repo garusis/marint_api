@@ -17,6 +17,18 @@ module.exports = function (_Publication) {
       }
     })
 
+    _Publication.afterRemote("prototype.__get__comments", function (context, comments, next) {
+      context.result = comments.map(function (comment) {
+        if (comment.__data.author) {
+          comment = comment.toJSON();
+          comment.authorImage = comment.author.image;
+          delete comment.author
+        }
+        return comment;
+      });
+      next(null);
+    })
+
   })
 
   Publication.createOptionsFromRemotingContext = function (ctx) {
@@ -25,14 +37,13 @@ module.exports = function (_Publication) {
     return base
   };
 
-
   Publication.create = async function () {
     let {data, options, oldCreate} = await commonOp.normalizeCreateWithOwner(arguments, true)
     let publication = await oldCreate.call(this, data, options)
     return publication
   }
 
-  function Publication() {
+  function Publication () {
 
   }
 

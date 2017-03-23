@@ -2,6 +2,7 @@
 import ModelBuilder from "loopback-build-model-helper"
 import * as commonOp from "../../server/helpers/common-operations"
 import app from "../../server/server"
+import _ from "lodash"
 
 module.exports = function (_Comment) {
 
@@ -37,6 +38,15 @@ module.exports = function (_Comment) {
     let comment = await oldCreate.call(this, data, options)
     return comment
   }
+
+  Comment.find = async function () {
+    let {filter, options, oldFind} = await commonOp.normalizeFindWithInclude(arguments)
+
+    filter.include.push({relation: "author", scope: {include: "image"}})
+
+    return await oldFind.call(this, filter, options)
+  }
+
 
   function Comment () {
   }
